@@ -21,12 +21,13 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    // unique: true
+    unique: true
   },
   password: {
     type: String,
     required: true
-  }
+  },
+  appointments: [{type: mongoose.Schema.Types.ObjectId, ref:"Appointment"}]
 });
 
 userSchema.pre("save", async function(next) {

@@ -1,0 +1,63 @@
+body {
+  background: var(--background-color);
+}
+.dash-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.nav {
+  flex: 0 0 70px;
+}
+.side {
+  width: 80%;
+  height: max-content;
+  flex: 1 1 100%;
+  /* background: var(--background-color); */
+  padding: 0px 3%;
+  display: flex;
+  justify-content: center;
+  /* padding-bottom: 30px; */
+}
+.main-dash-bd {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.left-dash-cont {
+  width: 62%;
+}
+.bash-rt {
+  width: 360px;
+  /* height: 80vh; */
+  background: white;
+  border-radius: 8px;
+  margin-top: 30px;
+  padding: 20px 30px;
+}
+.bttm-dash {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+  .left-dash-cont {
+    width: 100%;
+  }
+}
+@media (max-width: 700px) {
+  .nav {
+    display: none;
+    flex: none;
+    position: absolute;
+    left: 10px;
+  }
+  .bash-rt {
+    width: 100%;
+  }
+}

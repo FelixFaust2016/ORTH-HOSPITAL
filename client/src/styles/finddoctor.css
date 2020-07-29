@@ -1,0 +1,12 @@
+.find-doc-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 213px;
+  padding: 20px 20px;
+  background: white;
+  border-radius: 8px;
+}
+.find-doc-cont img {
+  width: 50%;
+}

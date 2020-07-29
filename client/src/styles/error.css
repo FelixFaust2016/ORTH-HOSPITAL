@@ -1,0 +1,18 @@
+.error-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.error {
+  color: var(--danger);
+  font-size: 10px;
+  font-weight: 600;
+}
+.error-cont i {
+  color: var(--danger);
+  padding-right: 10px;
+}

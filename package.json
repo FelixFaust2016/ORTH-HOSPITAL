@@ -1,0 +1,27 @@
+{
+  "name": "orth_hosp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jwt-decode": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"cd client && npm run build",
+    "install-client":"cd client && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelixFaust2016/ORTH-HOSPITAL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelixFaust2016/ORTH-HOSPITAL/issues"
+  },
+  "homepage": "https://github.com/FelixFaust2016/ORTH-HOSPITAL#readme"
+}

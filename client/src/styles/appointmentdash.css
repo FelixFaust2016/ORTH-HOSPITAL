@@ -1,0 +1,110 @@
+.appointment-cont:first-child {
+  margin-top: 0px;
+}
+.appointment-cont {
+  margin-top: 20px;
+  padding: 10px 10px;
+  /* border: 1px solid rgba(128, 128, 128, 0.233); */
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+.appointment-cont:hover {
+  box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.116);
+}
+.hd-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.hd-app .ap {
+  display: flex;
+  align-items: baseline;
+}
+.hd-app h4 {
+  padding-right: 4px;
+  color: black;
+}
+.hd-app .ap span {
+  font-size: 13px;
+  text-transform: capitalize;
+  color: rgba(128, 128, 128, 0.596);
+}
+.apoint-img {
+  width: 50px;
+  height: 50px;
+  background: red;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.apoint-img img {
+  width: 100%;
+  /* height: 100%; */
+  background-size: cover;
+}
+.appp-img-cont {
+  display: flex;
+  align-items: center;
+}
+.ap-tx {
+  margin-left: 15px;
+}
+.ap-tx h5 {
+  font-style: 14px;
+  /* margin-top: 5px; */
+  padding: 0px 0px 0px 0px;
+}
+.ap-tx span {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(128, 128, 128, 0.596);
+}
+#api-cont {
+  margin-top: 15px;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+#api-cont::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0;
+}
+/* Track */
+#api-cont::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.116);
+  border-radius: 10px;
+}
+
+/* Handle */
+#api-cont::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.13);
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+/* Handle on hover */
+#api-cont::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+#api-cont-cont:hover #api-cont::-webkit-scrollbar {
+  opacity: 1;
+}
+
+.no-app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  margin-top: 40%;
+}
+.no-app h1 {
+  font-family: "Permanent Marker", cursive !important;
+}

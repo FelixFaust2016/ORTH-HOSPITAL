@@ -1,15 +1,22 @@
+const jwt = require("jsonwebtoken");
+
 const db = require("../models");
 
 exports.register = async (req, res, next) => {
-  try { 
+  try {
     const user = await db.User.create(req.body);
     const { id, firstname, lastname, email } = user;
 
-    res.json({ id, firstname, lastname, email });
+    const token = jwt.sign(
+      { id, firstname, lastname, email },
+      process.env.SECRET
+    );
+
+    res.status(200).json({ id, firstname, lastname, email, token });
   } catch (err) {
-    // if (err.code === 11000) {
-    //   err.message = "Sorry, that email is already taken";
-    // }
+    if (err.code === 11000) {
+      err.message = "Sorry, that email is already taken";
+    }
     next(err);
   }
 };
@@ -20,14 +27,23 @@ exports.login = async (req, res, next) => {
     const { id, firstname, lastname, email } = user;
     const valid = await user.comparePassword(req.body.password);
     if (valid) {
+      const token = jwt.sign(
+        { id, firstname, lastname, email },
+        process.env.SECRET
+      );
+
       res.json({
         id,
         firstname,
         lastname,
-        email
+        email,
+        token,
       });
     } else {
-      throw new Erro("Invalid email or Password");
+      throw new Error();
     }
-  } catch (err) {}
+  } catch (err) {
+    err.message = "Invalid Email or Password";
+    next(err);
+  }
 };

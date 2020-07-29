@@ -1,0 +1,41 @@
+.top-nav {
+  width: 100%;
+  padding: 30px 0px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-transform: capitalize;
+  height: 20px;
+  margin: 0px auto;
+  border-bottom-left-radius:8px ;
+  border-bottom-right-radius:8px ;
+}
+.top-nav h4 {
+  font-size: 16px;
+  padding-left: 20px;
+}
+.rr-tp {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: rgba(128, 128, 128, 0.274);
+  padding-right: 20px;
+}
+.rr-tp i {
+  margin-right: 30px;
+  cursor: pointer;
+}
+.circ {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 94, 0);
+  color: white;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}

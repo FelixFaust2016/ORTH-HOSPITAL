@@ -1,0 +1,11 @@
+.booking-cont {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    padding: 20px 20px;
+}
+.booking-cont img {
+    width: 45%;
+}

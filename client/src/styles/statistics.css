@@ -1,0 +1,42 @@
+.stat-cont {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0px;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.stati {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--border-color);
+  padding-right: 50px;
+}
+.stati:last-child {
+  border-right: none;
+}
+.stati p,
+.stati h1 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.stati p {
+  font-size: 11px;
+  color: grey;
+  font-weight: 600;
+}
+.stati main {
+  width: 40%;
+}
+
+.stati img {
+  width: 80%;
+  /* padding-right: 10px; */
+}

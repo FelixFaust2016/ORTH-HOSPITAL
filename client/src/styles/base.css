@@ -1,0 +1,14 @@
+* {
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+}
+:root {
+  --danger: #eb5042;
+  --primary: #05a08177;
+  --btn-color: rgb(243, 188, 178);
+  --background-color: rgba(128, 128, 128, 0.103);
+  --border-color: #41414111;
+  /* fad0c9ff */
+  /* 32BEA6  alt-greem */
+}

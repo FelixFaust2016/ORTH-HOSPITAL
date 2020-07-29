@@ -1,0 +1,16 @@
+@import "./styles/base.css";
+@import "./styles/error.css";
+@import "./styles/auth.css";
+@import "./styles/button.css";
+@import "./styles/sideNav.css";
+@import "./styles/logo.css";
+@import "./styles/dasbboard.css";
+@import "./styles/topNav.css";
+@import "./styles/welcome.css";
+@import "./styles/appointmentdash.css";
+@import "./styles/prof.css";
+@import "./styles/statistics.css";
+@import "./styles/book.css";
+@import "./styles/finddoctor.css";
+@import "./styles/tab.css";
+@import "./styles/alldoctors.css";

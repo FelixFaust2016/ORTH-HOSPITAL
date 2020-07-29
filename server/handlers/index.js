@@ -1,5 +1,10 @@
 module.exports = {
-    ...require("./auth")
+    ...require("./auth"),
+    ...require("./doctors"),
+    ...require("./category"),
+    ...require("./appointment"),
+    ...require("./quotes"),
+    ...require("./review")
 }
 
 module.exports.notFound = (req, res, next) => {
@@ -11,6 +16,6 @@ module.exports.notFound = (req, res, next) => {
 
 module.exports.errorHandler = (err, req, res, next) => {
   res.status(err.status || 500).json({
-    err: err.message || "Something went wrong"
+    message: err.message || "Something went wrong"
   });
 };
