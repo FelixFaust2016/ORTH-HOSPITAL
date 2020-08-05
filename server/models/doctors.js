@@ -42,6 +42,15 @@ const doctorSchema = new mongoose.Schema({
     minlength: 1,
     required: true,
   },
+  description:{
+    type: String
+  },
+  qualification: {
+    type: String
+  },
+  timeAvailable: {
+    type: String
+  },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
 });
 

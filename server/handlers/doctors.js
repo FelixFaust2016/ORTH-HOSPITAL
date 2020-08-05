@@ -1,5 +1,5 @@
 const db = require("../models");
-const multer = require("multer")
+const multer = require("multer");
 
 exports.getDoctor = async (req, res, next) => {
   try {
@@ -23,11 +23,14 @@ exports.addDoctor = async (req, res, next) => {
       category: {
         _id: category._id,
         name: category.name,
-        pic: category.pic
+        pic: category.pic,
       },
       productImage: req.file.path,
       phoneNumber: req.body.phoneNumber,
-      rating: req.body.rating
+      rating: req.body.rating,
+      description: req.body.description,
+      qualification: req.body.qualification,
+      timeAvailable: req.body.timeAvailable,
     });
     doctor = await doctor.save();
     res.json(doctor).status(200);
@@ -37,11 +40,11 @@ exports.addDoctor = async (req, res, next) => {
   }
 };
 
-exports.getADoctor = async(req, res, next) => {
+exports.getADoctor = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const doctor = await db.Doctor.findById(id)
+    const doctor = await db.Doctor.findById(id);
 
     if (!doctor) throw new Error("No doctor found");
 
@@ -50,7 +53,7 @@ exports.getADoctor = async(req, res, next) => {
     err.status = 400;
     next(err);
   }
-}
+};
 
 // exports.deleteDoctor = async(req, res, next) => {
 

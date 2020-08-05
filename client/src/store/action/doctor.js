@@ -30,11 +30,13 @@ export const getCurrentDoctor = path => {
   return async dispatch => {
     try {
       const doctor = await api.call("get", `doctors/${path}`);
+      return doctor;
       dispatch(setCurrentDoctor(doctor));
       dispatch(removeError());
     } catch (err) {
-      const error = err.response.data;
-      dispatch(addError(error.message));
+      console.log(err)
+      const error = err.response;
+      dispatch(addError(error));
     }
   };
 };

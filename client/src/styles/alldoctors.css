@@ -23,6 +23,15 @@
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
+.doc-card-img {
+  width: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+.doc-card-img img {
+  width: 100%;
+}
 .doctor-card:hover {
     box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.103);
 }

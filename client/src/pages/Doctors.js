@@ -5,8 +5,6 @@ import { Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 import TopNav from "../components/TopNav";
 import DoctorTab from "../components/DoctorsTab";
-import All from "../components/doctorsTabcop/All";
-import Doctor from "../components/Doctors";
 
 const Doctors = ({ isAuthenticated, props }) => {
   if (!isAuthenticated) return <Redirect to="/" />;

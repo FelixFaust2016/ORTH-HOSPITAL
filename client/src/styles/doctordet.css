@@ -1,0 +1,41 @@
+.doc-det-sec {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+.doc-sid-one {
+  flex: 0 0 700px;
+  width: 700px;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.doc-sid-two {
+  width: 100%;
+  flex: 1;
+  height: 100vh;
+  background: white;
+  color: (--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.doc-side-inner-cont {
+  width: 500px;
+}
+.doc-side-inner-cont span {
+  font-size: 18px;
+  font-weight: 600;
+}
+.doc-side-inner-cont .desc {
+  font-size: 13px;
+  margin: 10px 0px;
+}
+.doc-side-inner-cont .qual {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.doc-side-inner-cont .qual span {
+  font-size: 13px;
+  font-weight: 600;
+}

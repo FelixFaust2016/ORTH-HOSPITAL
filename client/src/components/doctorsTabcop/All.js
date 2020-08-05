@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import Star from "react-star-ratings";
 
 import { getDoctors, getCurrentDoctor } from "../../store/action";
+import { doctors } from "../../store/reducers/doctor";
 
 class AllDoctors extends Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class AllDoctors extends Component {
   selectDoctor(id) {
     const { history } = this.props;
     console.log(history);
-    history.push(`/doctors/${id}`);
+    history.push({ pathname: `/doctors/${id}` });
   }
 
   render() {
@@ -32,14 +35,23 @@ class AllDoctors extends Component {
       >
         {" "}
         <div className="doctor-inner-cont">
-          <img
-            style={{ width: "100px" }}
-            src={`http://localhost:5000/${doctors.productImage}`}
-          />
+          <div className="doc-card-img">
+            <img
+              style={{ width: "100px" }}
+              src={`http://localhost:5000/${doctors.productImage}`}
+            />
+          </div>
           <aside className="doc-name">
             Dr. {doctors.firstname} {doctors.lastname}
           </aside>
           <aside className="doc-email">{doctors.email}</aside>
+          <Star
+            rating={doctors.rating}
+            starDimension="14px"
+            starSpacing="2px"
+            numberOfStars={5}
+            starRatedColor={"#FDCC0D"}
+          />
           <aside className="doc-category">{doctors.category.name}</aside>
         </div>
       </div>
@@ -62,4 +74,4 @@ export default connect(
     getDoctors,
     getCurrentDoctor,
   }
-)(AllDoctors);
+)(withRouter(AllDoctors));

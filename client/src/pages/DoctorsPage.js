@@ -9,7 +9,6 @@ const DoctorsPage = ({ match, getDoctors, doctors }) => {
 
   return (
     <div>
-      <ErrorMessage />
       <Doctor />
     </div>
   );
