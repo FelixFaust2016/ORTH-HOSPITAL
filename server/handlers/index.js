@@ -1,11 +1,12 @@
 module.exports = {
-    ...require("./auth"),
-    ...require("./doctors"),
-    ...require("./category"),
-    ...require("./appointment"),
-    ...require("./quotes"),
-    ...require("./review")
-}
+  ...require("./auth"),
+  ...require("./doctors"),
+  ...require("./category"),
+  ...require("./appointment"),
+  ...require("./quotes"),
+  ...require("./review"),
+  ...require("./profile"),
+};
 
 module.exports.notFound = (req, res, next) => {
   const err = new Error("Not Found");
@@ -16,6 +17,6 @@ module.exports.notFound = (req, res, next) => {
 
 module.exports.errorHandler = (err, req, res, next) => {
   res.status(err.status || 500).json({
-    message: err.message || "Something went wrong"
+    message: err.message || "Something went wrong",
   });
 };

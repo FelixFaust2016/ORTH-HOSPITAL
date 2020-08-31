@@ -39,7 +39,7 @@ class Orthopedics extends Component {
               />
             </div>
             <aside className="doc-name">
-              Dr. {doctors.firstname} {doctors.lastname}
+              {doctors.firstname} {doctors.lastname}
             </aside>
             <aside className="doc-email">{doctors.email}</aside>
             <Star

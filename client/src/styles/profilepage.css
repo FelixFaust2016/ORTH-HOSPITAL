@@ -1,0 +1,82 @@
+.profilePage-img {
+  width: 80px;
+  max-height: 80px;
+  border-radius: 60px;
+  overflow: hidden;
+  position: relative;
+}
+.profilePage-img img {
+  width: 100%;
+  border-radius: 60px;
+}
+.profileImageCont {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-between;
+  position: relative;
+  margin: 0px auto;
+  /* margin-left: 50px; */
+  margin-top: 30px;
+}
+.profileEdit-pen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  height: 10px;
+  width: 10px;
+  background: var(--btn-color);
+  border-radius: 20px;
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  left: 25%;
+  top: 40px;
+  z-index: 2;
+  cursor: pointer;
+}
+.profile-form {
+  width: 670px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.profile-form label {
+  display: block;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
+  /* margin: 0;
+  padding: 0; */
+  margin-top: 30px;
+  color: gray;
+}
+.profile-form input,
+.regionSelect {
+  width: 200px;
+  padding: 3px 0px;
+  /* text-align: center; */
+  border-radius: 2px;
+  border: none;
+  border-bottom: 0.1px solid gray;
+  outline: none;
+}
+.prof-over-cont {
+  width: 300px;
+  margin: 50px auto;
+}
+.prof-over-cont-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.prof-over-cont-text p {
+  /* margin-left: 10px; */
+  text-align: left;
+  font-size: 12px;
+}

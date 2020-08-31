@@ -1,0 +1,26 @@
+
+
+.cat-cont:hover {
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.274);
+  color: white;
+  background-color: var(--primary);
+}
+
+.pic-cont {
+  background: var(--btn-color);
+  color: white;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 40px;
+  margin: 0px auto;
+}
+
+.pic-cont i {
+  padding: 10px 10px;
+  position: relative;
+  text-align: center;
+}
+.text-pic-co {
+  position: absolute;
+  font-size: 16px;
+}

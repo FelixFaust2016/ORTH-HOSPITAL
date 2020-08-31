@@ -26,7 +26,7 @@ class Appointment extends Component {
       <div className="appointment-cont" key={appointments._id}>
         <div>
           <span style={{ fontWeight: "600", fontSize: "10px" }}>
-            {appointments.duration.start} to {appointments.duration.end}
+            {appointments.date.slice(0, 10)} BY {appointments.time}
           </span>
           <span className="appp-img-cont">
             <div className="apoint-img">
@@ -51,9 +51,7 @@ class Appointment extends Component {
           <main className="hd-app">
             <span className="ap">
               <h4>{appointments.length}</h4>
-              <span style={{ fontWeight: "600" }}>
-                Appointment{appointments.length > 1 ? "s" : ""}
-              </span>
+              <span>Appointment{appointments.length > 1 ? "s" : ""}</span>
             </span>
             <i style={{ cursor: "pointer" }} className="fas fa-arrow-right"></i>
           </main>

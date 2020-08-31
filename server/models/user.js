@@ -6,31 +6,37 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxlength: 555,
-    minlength: 2
+    minlength: 2,
   },
   lastname: {
     type: String,
     required: true,
     maxlength: 555,
-    minlength: 2
+    minlength: 2,
   },
   created: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  appointments: [{type: mongoose.Schema.Types.ObjectId, ref:"Appointment"}]
+  role: {
+    type: String,
+    enum: ["admin", "doctor", "patient"],
+    default: "patient",
+  },
+  appointments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Appointment" }],
+  profile: [{ type: mongoose.Schema.Types.ObjectId, ref: "Profile " }],
 });
 
-userSchema.pre("save", async function(next) {
+userSchema.pre("save", async function (next) {
   try {
     if (!this.isModified("password")) {
       return next();
@@ -44,7 +50,7 @@ userSchema.pre("save", async function(next) {
   }
 });
 
-userSchema.methods.comparePassword = async function(attempt, next) {
+userSchema.methods.comparePassword = async function (attempt, next) {
   try {
     return await bcrypt.compare(attempt, this.password);
   } catch (err) {
@@ -53,3 +59,4 @@ userSchema.methods.comparePassword = async function(attempt, next) {
 };
 
 module.exports = mongoose.model("User", userSchema);
+module.exports.userSchema = userSchema;

@@ -1,0 +1,9 @@
+.mod {
+  transform: translate(-50%, -50%);
+}
+
+.inner-modal-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

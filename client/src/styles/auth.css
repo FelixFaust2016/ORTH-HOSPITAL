@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(var(--primary), var(--primary)),
+  background: linear-gradient(var(--primary-sec), var(--primary)),
     url("../img/auth1.jpg");
   background-size: cover;
   background-repeat: no-repeat;

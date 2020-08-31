@@ -6,10 +6,11 @@
 :root {
   --danger: #eb5042;
   --primary: #05a08177;
-  --btn-color: rgb(243, 188, 178);
+  --btn-color: #ED8388 ;
   --btn-active-color: rgba(243, 188, 178, 0.726) ;
   --background-color: rgba(128, 128, 128, 0.103);
   --border-color: #41414111;
+  --primary-sec: #05a081c7;
   /* fad0c9ff */
   /* 32BEA6  alt-greem */
 }

@@ -3,7 +3,9 @@ import { Redirect } from "react-router-dom";
 
 import Doctors from "../components/Doctors";
 import SideNav from "../components/sideNav";
-import TopNav from "../components/TopNav"
+import TopNav from "../components/TopNav";
+import Appointment from "../components/AppointmentComp";
+import AppointmentOverview from "../components/AppointmentOverView"
 
 const Appointments = ({ isAuthenticated }) => {
   if (!isAuthenticated) return <Redirect to="/" />;
@@ -14,7 +16,10 @@ const Appointments = ({ isAuthenticated }) => {
         <SideNav />
       </main>
       <div className="side">
-      <TopNav title={"Appointments"}/>
+        <div style={{width:'100%'}}>
+          <TopNav title={"Appointments"} />
+          <AppointmentOverview />
+        </div>
       </div>
     </div>
   );

@@ -9,14 +9,14 @@ const { doctorSchema } = require("../models/doctors");
 //   }
 // });
 
-const durationSchema = new mongoose.Schema({
-  start: {
-    type: String
-  },
-  end: {
-    type: String
-  }
-});
+// const durationSchema = new mongoose.Schema({
+//   start: {
+//     type: String
+//   },
+//   end: {
+//     type: String
+//   }
+// });
 
 const appointmentSchema = new mongoose.Schema({
   user: {
@@ -39,8 +39,13 @@ const appointmentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
-  duration: {
-    type: durationSchema,
+  date: {
+    type: Date,
+    required: true
+  },
+  time: {
+    type: String, 
+    required: true
   }
 });
 

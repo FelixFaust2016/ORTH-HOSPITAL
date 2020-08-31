@@ -8,6 +8,8 @@ import TopNav from "../components/TopNav";
 const Payment = ({ isAuthenticated }) => {
   if (!isAuthenticated) return <Redirect to="/" />;
 
+  const options = ["male", "female"];
+
   return (
     <div className="dash-cont">
       <main className="nav">

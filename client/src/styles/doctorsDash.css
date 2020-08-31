@@ -1,0 +1,50 @@
+.doctor-over-stat-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.doctor-over-stat {
+  width: 100%;
+  /* padding: 10px; */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-top: 20px;
+}
+.doctor-over-stat div {
+  width: 220px;
+  padding: 10px;
+  height: 100px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.doctor-patients-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.doctor-patients-img img {
+  width: 50%;
+}
+.doctor-patients-text {
+  width: 35%;
+  text-align: left;
+  color: black;
+}
+.doctor-patients-text h1 {
+  font-size: 30px;
+}
+.doctor-patients-text p {
+  font-size: 10px;
+}
+.doctor-bash-rt {
+  width: 310px;
+  height: 79vh;
+  background: white;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 20px 30px;
+}

@@ -11,9 +11,11 @@ import Dashboard from "../pages/Dashboard";
 import Doctor from "../pages/Doctors";
 import DoctorPage from "../pages/DoctorsPage";
 import Appointment from "../pages/Appointments";
+import AppointmentCreate from "../pages/CreateAppointment";
 import Profile from "../pages/Profile";
 import Payment from "../pages/Payment";
 import TestPage from "../pages/Test";
+import Category from "../components/Category";
 
 const Views = ({ auth, getCurrentDoctor }) => (
   <div>
@@ -58,6 +60,13 @@ const Views = ({ auth, getCurrentDoctor }) => (
       />
       <Route
         exact
+        path="/appointment/create"
+        render={() => (
+          <AppointmentCreate isAuthenticated={auth.isAuthenticated} />
+        )}
+      />
+      <Route
+        exact
         path="/profile"
         render={() => <Profile isAuthenticated={auth.isAuthenticated} />}
       />
@@ -65,6 +74,11 @@ const Views = ({ auth, getCurrentDoctor }) => (
         exact
         path="/payment"
         render={() => <Payment isAuthenticated={auth.isAuthenticated} />}
+      />
+      <Route
+        exact
+        path="/category"
+        render={() => <Category isAuthenticated={auth.isAuthenticated} />}
       />
       <Route
         exact

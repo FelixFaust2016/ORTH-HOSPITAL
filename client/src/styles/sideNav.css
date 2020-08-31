@@ -3,7 +3,10 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  background: #409482;
+  background: linear-gradient(var(--primary), var(--primary-sec)),
+    url("../img/auth2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .side-nav-cont {
   display: flex;

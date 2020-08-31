@@ -2,8 +2,6 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
-
-const db = require("./models");
 const handle = require("./handlers");
 const routes = require("./routes");
 
@@ -21,6 +19,7 @@ app.use("/api/category", routes.category);
 app.use("/api/appointment", routes.appointment)
 app.use("/api/quotes", routes.quotes)
 app.use("/api/reviews", routes.review)
+app.use("/api/profile", routes.profile)
 
 app.use(handle.notFound);
 app.use(handle.errorHandler);

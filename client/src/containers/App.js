@@ -5,8 +5,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import { store } from "../store";
 import { setCurrentUser, addError, setToken } from "../store/action";
-import View from "./Views";
-import "../App.css"
+import Views from "./Views";
+import DoctorsViews from "../../src/components/Doctors/containers/Views";
+import "../App.css";
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -22,7 +23,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <React.Fragment>
-        <View />
+        <Views />
       </React.Fragment>
     </Router>
   </Provider>

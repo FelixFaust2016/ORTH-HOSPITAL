@@ -1,0 +1,46 @@
+.re-patient-table {
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+  padding: 10px 0px;
+  border: 0px;
+  border-collapse: collapse;
+  border-spacing: 10px 15px;
+}
+.re-patient-table tr {
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.re-patient-table-hd {
+  font-size: 11px;
+  color: grey;
+  text-transform: capitalize;
+}
+.re-patient-table-hd td {
+  padding: 0px 20px;
+}
+.re-patient-table-text {
+  background: white;
+  padding: 0px 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+.patient-img-table {
+  width: 50px;
+  max-height: 50px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.patient-img-table img {
+  width: 100%;
+  border-radius: 25px;
+}
+.im-row {
+  display: flex;
+  align-items: center;
+}
+.re-patient-table-text td {
+  font-size: 10px;
+  padding: 10px 20px;
+}

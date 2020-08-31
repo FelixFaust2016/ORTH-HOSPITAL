@@ -5,7 +5,7 @@ import Register from "../components/Register";
 import ErrorMessage from "../components/Error";
 
 const RegisterAuth = ({ authType, isAuthenticated }) => {
-  if (isAuthenticated) return <Redirect to="/" />;
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
 
 
   return (

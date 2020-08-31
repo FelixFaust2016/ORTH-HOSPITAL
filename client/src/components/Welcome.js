@@ -5,8 +5,9 @@ import Quote from "./Quote";
 
 const Welcome = ({ auth }) => {
   return (
-    <div className="wel-cont">
-      <div className="wel-text">
+    <div>
+      <div className="wel-cont">
+        <div className="wel-text">
         <span className="welcome">Welcome</span>
         <div className="name">
           <div>
@@ -19,6 +20,7 @@ const Welcome = ({ auth }) => {
         <div className="quote">
           <Quote />
         </div>
+      </div>
       </div>
     </div>
   );

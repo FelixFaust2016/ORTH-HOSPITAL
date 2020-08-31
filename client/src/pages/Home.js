@@ -5,7 +5,6 @@ import Nav from "../containers/Auth.Nav";
 const Home = () => (
   <>
     <Nav />
-    <div>Home it is</div>
   </>
 );
 

@@ -4,7 +4,8 @@ import auth from "./auth";
 import error from "./error";
 import { doctors, currentDoctor } from "./doctor";
 import { quotes } from "./quotes";
-import {appointments} from "./appointment"
+import { appointments } from "./appointment";
+import { categories } from "./category";
 
 export default combineReducers({
   auth,
@@ -12,5 +13,6 @@ export default combineReducers({
   doctors,
   quotes,
   appointments,
-  currentDoctor
+  currentDoctor,
+  categories,
 });

@@ -12,7 +12,7 @@ body {
   flex: 0 0 70px;
 }
 .side {
-  width: 80%;
+  width: 70%;
   height: max-content;
   flex: 1 1 100%;
   /* background: var(--background-color); */
@@ -35,14 +35,14 @@ body {
   /* height: 80vh; */
   background: white;
   border-radius: 8px;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 20px 30px;
 }
 .bttm-dash {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 @media (max-width: 1024px) {

@@ -5,14 +5,14 @@ const db = require("../models");
 exports.register = async (req, res, next) => {
   try {
     const user = await db.User.create(req.body);
-    const { id, firstname, lastname, email } = user;
+    const { id, firstname, lastname, email, role } = user;
 
     const token = jwt.sign(
-      { id, firstname, lastname, email },
+      { id, firstname, lastname, email, role },
       process.env.SECRET
     );
 
-    res.status(200).json({ id, firstname, lastname, email, token });
+    res.status(200).json({ id, firstname, lastname, email, token, role });
   } catch (err) {
     if (err.code === 11000) {
       err.message = "Sorry, that email is already taken";
@@ -24,11 +24,11 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const user = await db.User.findOne({ email: req.body.email });
-    const { id, firstname, lastname, email } = user;
+    const { id, firstname, lastname, email, role } = user;
     const valid = await user.comparePassword(req.body.password);
     if (valid) {
       const token = jwt.sign(
-        { id, firstname, lastname, email },
+        { id, firstname, lastname, email, role },
         process.env.SECRET
       );
 
@@ -38,6 +38,7 @@ exports.login = async (req, res, next) => {
         lastname,
         email,
         token,
+        role,
       });
     } else {
       throw new Error();

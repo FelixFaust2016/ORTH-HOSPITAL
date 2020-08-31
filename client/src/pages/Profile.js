@@ -1,9 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-import Doctors from "../components/Doctors";
 import SideNav from "../components/sideNav";
-import TopNav from "../components/TopNav"
+import TopNav from "../components/TopNav";
+import ProfileComp from "../components/Profile";
+import ProfileOverview from "../components/ProfileOverView";
+import ProfOverview from "../components/ProfileOverView";
 
 const Profile = ({ isAuthenticated }) => {
   if (!isAuthenticated) return <Redirect to="/" />;
@@ -14,7 +16,11 @@ const Profile = ({ isAuthenticated }) => {
         <SideNav />
       </main>
       <div className="side">
-      <TopNav title={"Profile"}/>
+        <div style={{ width: "100%", margn: "0px auto" }}>
+          <TopNav title={"Profile"} />
+          {/* <ProfileComp/> */}
+          <ProfOverview />
+        </div>
       </div>
     </div>
   );
