@@ -56,7 +56,7 @@ const DoctorsDash = () => {
             <div className="doctor-bash-rt">
               <Appoint />
               <AppBox />
-              <AppBox />
+              {/* <AppBox /> */}
             </div>
           </div>
         </div>

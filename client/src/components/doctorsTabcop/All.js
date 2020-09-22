@@ -26,6 +26,7 @@ class AllDoctors extends Component {
 
   render() {
     const { auth, getDoctors } = this.props;
+    console.log(this.props.doctors, ".......................")
 
     const doctors = this.props.doctors.map((doctors) => (
       <div
@@ -42,9 +43,9 @@ class AllDoctors extends Component {
             />
           </div>
           <aside className="doc-name">
-            {doctors.firstname} {doctors.lastname}
+            {doctors?.user?.firstname} {doctors?.user?.lastname}
           </aside>
-          <aside className="doc-email">{doctors.email}</aside>
+          <aside className="doc-email">{doctors?.user?.email}</aside>
           <Star
             rating={doctors.rating}
             starDimension="14px"

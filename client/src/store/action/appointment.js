@@ -1,7 +1,6 @@
 import api from "../../services/api";
 import { SET_APPOINTMENT, SET_CURRENT_APPOINTMENT } from "../actionTypes";
 import { addError, removeError } from "./error";
-import { appointments } from "../reducers/appointment";
 
 export const setAppointments = (appointments) => ({
   type: SET_APPOINTMENT,
@@ -15,8 +14,10 @@ export const setCurrentAppointment = (appointment) => ({
 
 export const getAppointments = () => {
   return async (dispatch) => {
+    console.log("helllllllllllooooo");
     try {
       const appointments = await api.call("get", "appointment");
+      console.log(appointments, "____________________");
       dispatch(setAppointments(appointments));
       dispatch(removeError());
     } catch (err) {
@@ -28,11 +29,15 @@ export const getAppointments = () => {
 
 export const getUserAppointment = () => {
   return async (dispatch) => {
+    console.log("I reached");
     try {
       const appointments = await api.call("get", "appointment/user");
+      console.log(appointments);
       dispatch(setAppointments(appointments));
       dispatch(removeError());
+      console.log("I got here");
     } catch (err) {
+      console.log(err, "=================");
       const error = err.response.data;
       dispatch(addError(error.message));
     }
@@ -58,6 +63,19 @@ export const createAppointment = (data) => {
     try {
       const appointment = await api.call("post", "appointment", data);
       dispatch(setCurrentAppointment(appointment));
+      dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
+export const getDoctorsApp = (path) => {
+  return async (dispatch) => {
+    try {
+      const appointments = await api.call("get", "appointment/doctor");
+      dispatch(setAppointments(appointments));
       dispatch(removeError());
     } catch (err) {
       const error = err.response.data;

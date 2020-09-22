@@ -4,10 +4,25 @@ import { connect } from "react-redux";
 const Error = ({ error }) => (
   <>
     {error && (
-      <main className="error-cont">
-        <div className="error">
-          {error.message && <i class="fas fa-exclamation-triangle"></i>}
-          {error.message}{" "}
+      <main
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          background: "#FF0033",
+          color: "white",
+          padding: error.message && " 10px 10px",
+        }}
+        className="error-cont"
+      >
+        <div style={{ color: "white" }} className="error">
+          <p>{error.message}</p>{" "}
+          {error.message && (
+            <i
+              style={{ marginLeft: "5px" }}
+              class="fas fa-exclamation-circle"
+            ></i>
+          )}
         </div>
       </main>
     )}

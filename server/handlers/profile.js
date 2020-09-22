@@ -14,25 +14,78 @@ exports.getProfile = async (req, res, next) => {
   }
 };
 
-exports.addProfile = async (req, res, next) => {
+exports.getUserProfile = async (req, res, next) => {
   try {
     const { id } = req.decoded;
-    const user = await db.User.findById(id);
-    const doctor = await db.Doctor.findById(req.body.doctorId);
-    if (!doctor) return res.json("Could not find Id").status(404);
-    if (user.profile.length > 0) return res.json("Profile already created").status(404)
 
-    const profile = await db.Profile.create({
+    const user = await db.User.findById(id)
+      .populate("profile")
+      .populate([
+        {
+          path: "patient",
+          model: "User",
+        },
+      ]);
+
+    console.log("fnufroi" + user);
+    res.status(200).json(user.profile);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};
+
+exports.addProfile = async (req, res, next) => {
+  console.log("########################");
+  console.log(req.file);
+  console.log("#######################");
+  try {
+    console.log(req.body);
+    const { id } = req.decoded;
+    const user = await db.User.findById(id);
+
+    // if (user.profile)
+    //   return res.json("Profile already created").status(404);
+
+    const body = {
       ...req.body,
       patient: id,
-      profileImage: req.file.path,
-    });
-    user.profile.push(profile._id);
+    };
+
+    if (req.file && req.file.path) {
+      body.profileImage = req.file.path;
+    }
+
+    const profile = await db.Profile.create(body);
+    user.profile = profile._id;
     await user.save();
 
     res.status(201).json({ ...profile._doc, user: user._id });
   } catch (err) {
-    err.status(404);
+    err.status = 404;
+    console.log(err);
+    next(err);
+  }
+};
+
+exports.updateProfile = async (req, res, next) => {
+  try {
+    const { id: userId } = req.decoded;
+
+    console.log(req.body);
+    console.log(userId);
+    const profile = await db.Profile.findOneAndUpdate(
+      { patient: userId },
+      req.body,
+      {
+        new: true,
+      }
+    );
+
+    return res.json(profile);
+  } catch (err) {
+    err.status = 404;
+    console.log(err);
     next(err);
   }
 };

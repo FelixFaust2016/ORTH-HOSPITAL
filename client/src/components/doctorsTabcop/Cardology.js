@@ -40,7 +40,7 @@ class Cardiology extends Component {
               />
             </div>
             <aside className="doc-name">
-              {doctors.firstname} {doctors.lastname}
+              {doctors.user.firstname} {doctors.user.lastname}
             </aside>
             <aside className="doc-email">{doctors.email}</aside>
             <Star

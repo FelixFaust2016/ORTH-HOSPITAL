@@ -1,8 +1,17 @@
-import { SET_CURRENT_USER } from "../actionTypes";
+import { SET_CURRENT_USER, SET_USER } from "../actionTypes";
 
 const DEFAULT_STATE = {
   isAuthenticated: false,
-  user: {}
+  user: {},
+};
+
+export const users = (state = [], action) => {
+  switch (action.type) {
+    case SET_USER:
+      return action.categories;
+    default:
+      return state;
+  }
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -10,7 +19,7 @@ export default (state = DEFAULT_STATE, action) => {
     case SET_CURRENT_USER:
       return {
         isAuthenticated: !!Object.keys(action.user).length,
-        user: action.user
+        user: action.user,
       };
 
     default:

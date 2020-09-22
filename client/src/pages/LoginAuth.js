@@ -3,8 +3,8 @@ import { Redirect } from "react-router-dom";
 
 import Login from "../components/Login";
 
-const LoginAuth = ({ authType, isAuthenticated }) => {
-  if (isAuthenticated) return <Redirect to="/dashboard" />;
+const LoginAuth = ({ authType, isAuthenticated, user }) => {
+  if (isAuthenticated && user) return <Redirect to="/dashboard" />;
 
   return (
     <>
@@ -14,3 +14,4 @@ const LoginAuth = ({ authType, isAuthenticated }) => {
 };
 
 export default LoginAuth;
+ 

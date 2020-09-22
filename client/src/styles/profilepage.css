@@ -19,23 +19,7 @@
   /* margin-left: 50px; */
   margin-top: 30px;
 }
-.profileEdit-pen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  height: 10px;
-  width: 10px;
-  background: var(--btn-color);
-  border-radius: 20px;
-  color: white;
-  font-size: 10px;
-  position: absolute;
-  left: 25%;
-  top: 40px;
-  z-index: 2;
-  cursor: pointer;
-}
+
 .profile-form {
   width: 670px;
   margin: 10px auto;
@@ -53,19 +37,17 @@
   margin-top: 30px;
   color: gray;
 }
-.profile-form input,
 .regionSelect {
-  width: 200px;
-  padding: 3px 0px;
-  /* text-align: center; */
-  border-radius: 2px;
+  width: 380px;
+  padding: 5px 5px;
   border: none;
-  border-bottom: 0.1px solid gray;
-  outline: none;
+  border: 0.1px solid rgba(128, 128, 128, 0.158);
+  background: var(--border-color);
+  outline-color: var(--primary-sec);
 }
 .prof-over-cont {
   width: 300px;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 .prof-over-cont-text {
   display: flex;
@@ -79,4 +61,91 @@
   /* margin-left: 10px; */
   text-align: left;
   font-size: 12px;
+}
+
+/* --------------------------------------------------------------- */
+
+.prof-page-conts {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.profileImageConts {
+  width: 200px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.profileImageConts i {
+  position: absolute;
+  right: 40px;
+  z-index: 1;
+  color: white;
+  padding: 10px;
+  border-radius: 100%;
+  background: var(--btn-color);
+  cursor: pointer;
+}
+.profilePage-imgs {
+  width: 100px;
+  max-height: 100px;
+  border-radius: 60px;
+  overflow: hidden;
+  position: relative;
+}
+.profilePage-imgs img {
+  width: 100%;
+  border-radius: 60px;
+}
+
+.prof-left {
+  width: 310px;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 8px;
+  max-height: 57vh;
+}
+.prof-right {
+  width: 780px;
+  padding: 10px 20px 15px 20px;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-wrap: wrap;
+}
+.prof-right-comp h6 {
+  margin-top: 10px;
+}
+.prof-right-comp p {
+  font-size: 14px;
+  color: grey;
+  margin-top: 10px;
+}
+.prof-right-comp main {
+  margin-top: 30px;
+}
+.prof-input {
+  display: block;
+  margin-top: 20px;
+}
+.prof-input label {
+  text-transform: capitalize;
+  color: grey;
+  font-size: 12px;
+  font-weight: bold;
+}
+.prof-right input {
+  width: 370px;
+  padding: 5px 5px;
+  border: none;
+  border: 0.1px solid rgba(128, 128, 128, 0.158);
+  background: var(--border-color);
+  outline-color: var(--primary-sec);
 }

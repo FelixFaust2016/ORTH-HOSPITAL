@@ -17,7 +17,7 @@ class DropDown extends Component {
   render() {
     const { close } = this.state;
     return (
-      <div>
+      <div style={{ position: "relative" }}>
         <div onClick={this.handleClose} className="drop-down-cont">
           <p className="drop-text">{this.state.drop}</p>
           {close === false ? (

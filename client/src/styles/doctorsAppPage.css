@@ -1,19 +1,20 @@
 .doc-app-card-cont {
-    padding: 20px 30px;
-    border-radius: 10px;
-    background: white;
-    margin-left: 20px;
-    margin-top: 20px;
-    width: 150px;
-    transition: 0.3s ease-in-out;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: white;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 180px;
+  transition: 0.3s ease-in-out;
 }
 .doc-hd-card {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .doc-detail {
-    font-size: 12px;
-    margin-top: 10px;
+  font-size: 12px;
+  margin-top: 10px;
 }

@@ -16,6 +16,7 @@ import Profile from "../pages/Profile";
 import Payment from "../pages/Payment";
 import TestPage from "../pages/Test";
 import Category from "../components/Category";
+import FourOFour from "../components/FourOFour";
 
 const Views = ({ auth, getCurrentDoctor }) => (
   <div>
@@ -92,6 +93,7 @@ const Views = ({ auth, getCurrentDoctor }) => (
         path="/text"
         render={() => <TestPage isAuthenticated={auth.isAuthenticated} />}
       />
+      <Route exact path="/*" component={FourOFour} />
     </Switch>
   </div>
 );

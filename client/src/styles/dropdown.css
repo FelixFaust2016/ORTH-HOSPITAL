@@ -1,13 +1,13 @@
 .drop-down-cont {
-  width: 180px;
+  width: 360px;
   /* padding: 6px; */
-  padding: 2px 10px;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   color: black;
-  border-bottom: 0.1px solid grey;
+  border: 0.1px solid rgba(128, 128, 128, 0.158);
+  background: var(--border-color);
   border-radius: 3px;
-  background: white;
   outline-color: var(--primary);
   position: relative;
   align-items: center;
@@ -19,8 +19,7 @@
 .drop-down-select {
   width: 200px;
   background: white;
-  /* padding: 10px 7px; */
-  margin-top: 10px;
+  bottom: -90%;
   position: absolute;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.26);
 }

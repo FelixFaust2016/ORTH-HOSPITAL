@@ -1,18 +1,23 @@
 import { addError, removeError } from "./error";
-import { SET_CURRENT_USER } from "../actionTypes";
+import { SET_CURRENT_USER, SET_USER } from "../actionTypes";
 import api from "../../services/api";
 
-export const setCurrentUser = user => ({
-  type: SET_CURRENT_USER,
-  user
+export const setUser = (users) => ({
+  type: SET_USER,
+  users,
 });
 
-export const setToken = token => {
+export const setCurrentUser = (user) => ({
+  type: SET_CURRENT_USER,
+  user,
+});
+
+export const setToken = (token) => {
   api.setToken(token);
 };
 
 export const logout = () => {
-  return dispatch => {
+  return (dispatch) => {
     localStorage.clear();
     api.setToken(null);
     dispatch(setCurrentUser({}));
@@ -20,13 +25,26 @@ export const logout = () => {
   };
 };
 
-export const authUser = (path, data) => {
-  return async dispatch => {
+export const authUser = (path, data, cb) => {
+  return async (dispatch) => {
     try {
-      const { token, ...user } = await api.call('post', `auth/${path}`, data);
+      const { token, ...user } = await api.call("post", `auth/${path}`, data);
       localStorage.setItem("jwtToken", token);
       api.setToken(token);
       dispatch(setCurrentUser(user));
+      dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
+export const getUser = () => {
+  return async (dispatch) => {
+    try {
+      const users = await api.call("get", "auth/users");
+      dispatch(setUser(users));
       dispatch(removeError());
     } catch (err) {
       const error = err.response.data;

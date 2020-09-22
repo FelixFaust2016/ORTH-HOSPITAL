@@ -5,10 +5,6 @@ const profileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  doctorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Doctor",
-  },
   age: {
     type: Number,
     required: true,
@@ -65,14 +61,13 @@ const profileSchema = new mongoose.Schema({
     default: "none",
   },
   prevDoctor: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Doctor",
+    type: String,
   },
   country: {
     type: String,
     default: "none",
   },
-  state: {
+  region: {
     type: String,
     default: "none",
   },
@@ -81,8 +76,14 @@ const profileSchema = new mongoose.Schema({
     default: Date.now(),
   },
   profileImage: {
-    type: String
-  }
+    type: String,
+  },
+  weight: {
+    type: String,
+  },
+  height: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Profile", profileSchema);

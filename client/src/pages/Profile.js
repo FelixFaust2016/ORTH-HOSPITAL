@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 import SideNav from "../components/sideNav";
 import TopNav from "../components/TopNav";
-import ProfileComp from "../components/Profile";
-import ProfileOverview from "../components/ProfileOverView";
+import ProfileComp from "../components/ProfileComponent";
 import ProfOverview from "../components/ProfileOverView";
 
 const Profile = ({ isAuthenticated }) => {
+  const [state, setState] = useState(true);
+  console.log(state);
   if (!isAuthenticated) return <Redirect to="/" />;
 
   return (
@@ -18,8 +19,11 @@ const Profile = ({ isAuthenticated }) => {
       <div className="side">
         <div style={{ width: "100%", margn: "0px auto" }}>
           <TopNav title={"Profile"} />
-          {/* <ProfileComp/> */}
-          <ProfOverview />
+          {state ? (
+            <ProfOverview shouldHide={setState} />
+          ) : (
+            <ProfileComp shouldHide={setState} />
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { authUser, logout } from "../store/action";
 import ErrorMessage from "../components/Error";
@@ -23,14 +23,16 @@ class Auth extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     const { email, password } = this.state;
     const { authType } = this.props;
     e.preventDefault();
 
-    setTimeout(() => {
-      this.props.authUser(authType || "login", { email, password });
-    }, 2000);
+    await this.props.authUser(authType || "login", { email, password });
+    this.props.history.push("/dashboard")
+   
+
+  
   }
 
   handleIsLoading = () => {
@@ -41,6 +43,7 @@ class Auth extends Component {
   };
 
   render() {
+    console.log(this.props.history)
     const { email, password, isLoading } = this.state;
     return (
       <div className="auth-cont">
@@ -48,7 +51,6 @@ class Auth extends Component {
           <main>
             <h2>login</h2>
             <p className="sub-auth-hd">We provide the best healthcare</p>
-            <ErrorMessage />
             <div className="input-cont">
               <aside>
                 <img src={two} />
@@ -102,4 +104,4 @@ class Auth extends Component {
   }
 }
 
-export default connect(() => ({}), { authUser, logout })(Auth);
+export default withRouter(connect(() => ({}), { authUser, logout })(Auth));

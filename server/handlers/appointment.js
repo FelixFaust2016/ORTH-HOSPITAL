@@ -1,13 +1,24 @@
 const db = require("../models");
+const { populate } = require("../models/appiontment");
 const appiontment = require("../models/appiontment");
 
 exports.getApp = async (req, res, next) => {
   try {
-    const appointment = await db.Appointment.find().populate("user", [
-      "firstname",
-      "lastname",
-      "id",
-    ]);
+    const appointment = await db.Appointment.find()
+      .populate({
+        path: "user",
+        select: "firstname lastname email id",
+        populate: "profile",
+      })
+      .populate({
+        path: "doctor",
+        populate: {
+          path: "user",
+          select: "firstname lastname id",
+        },
+      });
+
+    console.log(appointment);
     res.status(200).json(appointment);
   } catch (err) {
     err.status(404);
@@ -20,22 +31,19 @@ exports.addApp = async (req, res, next) => {
     console.log(req.decoded);
     const { id } = req.decoded;
     const user = await db.User.findById(id);
-    const doctor = await db.Doctor.findById(req.body.doctorId);
-    if (!doctor) return res.json("Could not find Id").status(404);
-
-    const { subject, date,time, isApproved } = req.body;
+    // const doctorId = await db.Doctor.findById(id);
+    const { subject, date, time, isApproved } = req.body;
     const appointment = await db.Appointment.create({
-      doctor: {
-        ...doctor,
-      },
+      doctor: req.body.doctorId,
       subject,
       date,
       time,
       id,
       isApproved,
-      user
+      user,
     });
     user.appointments.push(appointment._id);
+    // doctorId.appointments.push(appointment._id);
     await user.save();
 
     res.status(201).json({ ...appointment._doc, user: user._id });
@@ -50,8 +58,11 @@ exports.getAppUser = async (req, res, next) => {
   try {
     const { id } = req.decoded;
 
-    const user = await db.User.findById(id).populate("appointments");
-
+    const user = await db.User.findById(id).populate({
+      path: "appointments",
+      populate: "doctor",
+      populate: { path: "doctor", populate: "user" },
+    });
     res.status(200).json(user.appointments);
   } catch (err) {
     err.status = 400;
@@ -78,6 +89,27 @@ exports.getAApp = async (req, res, next) => {
   }
 };
 
+exports.getDocApp = async (req, res, next) => {
+  try {
+    const { id } = req.decoded;
+
+    const doctor = await db.Doctor.findOne({ user: id });
+
+    const appointment = await db.Appointment.find({
+      doctor: doctor._id,
+    }).populate({
+      path: "user",
+      select: "firstname lastname email id",
+      populate: "profile",
+    });
+
+    res.status(200).json(appointment);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};
+
 //deleting appointment
 exports.deleteAppointment = async (req, res, next) => {
   try {
@@ -91,7 +123,7 @@ exports.deleteAppointment = async (req, res, next) => {
     }
 
     await appointment.remove();
-    res.status(202).json(appointment); 
+    res.status(202).json(appointment);
   } catch (err) {
     err.status = 400;
     next(err);

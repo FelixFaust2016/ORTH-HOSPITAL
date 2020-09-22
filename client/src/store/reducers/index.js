@@ -6,6 +6,7 @@ import { doctors, currentDoctor } from "./doctor";
 import { quotes } from "./quotes";
 import { appointments } from "./appointment";
 import { categories } from "./category";
+import { profiles } from "./profile";
 
 export default combineReducers({
   auth,
@@ -15,4 +16,5 @@ export default combineReducers({
   appointments,
   currentDoctor,
   categories,
+  profiles
 });

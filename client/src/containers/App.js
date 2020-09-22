@@ -7,6 +7,9 @@ import { store } from "../store";
 import { setCurrentUser, addError, setToken } from "../store/action";
 import Views from "./Views";
 import DoctorsViews from "../../src/components/Doctors/containers/Views";
+import ErrorMessage from "../components/Error";
+import AuthenticatedApp from "./AuthenticatesApp";
+import UnAuthenticatedApp from "./UnauthenticatedApp";
 import "../App.css";
 
 if (localStorage.jwtToken) {
@@ -19,14 +22,16 @@ if (localStorage.jwtToken) {
   }
 }
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <React.Fragment>
-        <Views />
-      </React.Fragment>
-    </Router>
-  </Provider>
-);
+const App = () =>  {
+  const isAuthenticated = !!localStorage.jwtToken;
+  return  <Provider store={store}>
+  <Router>
+    <React.Fragment>
+      <ErrorMessage />
+     {isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+    </React.Fragment>
+  </Router>
+</Provider>
+}
 
 export default App;

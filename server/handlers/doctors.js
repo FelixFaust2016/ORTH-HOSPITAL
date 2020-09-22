@@ -3,7 +3,7 @@ const multer = require("multer");
 
 exports.getDoctor = async (req, res, next) => {
   try {
-    const doctor = await db.Doctor.find();
+    const doctor = await db.Doctor.find().populate({path: "user", select: "firstname lastname email"});
     res.status(200).json(doctor);
   } catch (err) {
     err.status(404);
@@ -13,13 +13,23 @@ exports.getDoctor = async (req, res, next) => {
 
 exports.addDoctor = async (req, res, next) => {
   try {
+
+    // create new user
+    const newUser = new db.User({
+      role: "doctor",
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password:"password"
+    })
+
+    await newUser.save()
+    
     const category = await db.Category.findById(req.body.categoryId);
     if (!category) return res.json("Could not find Id").status(404);
 
     let doctor = new db.Doctor({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
+      user: newUser._id,
       category: {
         _id: category._id,
         name: category.name,

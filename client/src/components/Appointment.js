@@ -35,8 +35,9 @@ class Appointment extends Component {
               />
             </div>
             <div className="ap-tx">
-              <h5>
-                {appointments.doctor.firstname} {appointments.doctor.lastname}
+              <h5 style={{ textTransform: "capitalize" }}>
+                {appointments.doctor?.user?.firstname}{" "}
+                {appointments.doctor?.user?.lastname}
               </h5>
               <span>{appointments.doctor.category.name}</span>
             </div>

@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     default: "patient",
   },
   appointments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Appointment" }],
-  profile: [{ type: mongoose.Schema.Types.ObjectId, ref: "Profile " }],
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
 });
 
 userSchema.pre("save", async function (next) {

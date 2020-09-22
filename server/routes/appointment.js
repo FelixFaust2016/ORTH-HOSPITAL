@@ -7,6 +7,8 @@ router.route("/").get(handlers.getApp).post(auth, handlers.addApp);
 
 router.get("/user", auth, handlers.getAppUser);
 
+router.get("/doctor", auth, handlers.getDocApp)
+
 router
   .route("/:id")
   .get(handlers.getAApp)

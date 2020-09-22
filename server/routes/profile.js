@@ -31,6 +31,10 @@ const { auth } = require("../middlewares/auth");
 
 // router.route("/").get(handlers.getProfile).post(handlers.addProfile);
 router.get("/", handlers.getProfile);
+
 router.post("/", auth, upload.single("profileImage"), handlers.addProfile);
+router.put("/", auth,handlers.updateProfile);
+
+router.get("/user", auth, handlers.getUserProfile);
 
 module.exports = router;

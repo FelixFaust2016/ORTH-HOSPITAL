@@ -1,6 +1,7 @@
 * {
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Open Sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
   /* font-family: 'Roboto', sans-serif; */
 }
 :root {
@@ -11,6 +12,8 @@
   --background-color: rgba(128, 128, 128, 0.103);
   --border-color: #41414111;
   --primary-sec: #05a081c7;
+  --alt-text: #7E8085;
+  --border-color: #e7eaee52;
   /* fad0c9ff */
   /* 32BEA6  alt-greem */
 }

@@ -11,7 +11,7 @@ class Navigation extends Component {
         {
           link: "Overview",
           icon: "fas fa-signal",
-          path: "/doctors_dashboard",
+          path: "/dashboard",
         },
         {
           link: "Paitents",

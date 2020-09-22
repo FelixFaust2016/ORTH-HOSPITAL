@@ -12,7 +12,7 @@ class SideNav extends Component {
       nav: [
         {
           link: "Dashboard",
-          icon: "fas fa-tachometer-alt",
+          icon: "fas fa-th-large",
           path: "/dashboard",
         },
         { link: "Doctors", icon: "fas fa-user-md", path: "/doctors" },
@@ -26,7 +26,7 @@ class SideNav extends Component {
           link: "Payment",
           icon: "fas fa-wallet",
           path: "/payment",
-        }
+        },
       ],
     };
   }
@@ -59,10 +59,7 @@ class SideNav extends Component {
         </nav>{" "}
         <div onClick={this.props.logout} className="link-cont logout">
           <div className="icon">
-            <i
-              style={{ color: "white" }}
-              className="fas fa-sign-out-alt"
-            ></i>
+            <i style={{ color: "white" }} className="fas fa-sign-out-alt"></i>
           </div>
           <div className="link">Logout</div>
         </div>

@@ -48,9 +48,10 @@ class Modal extends Component {
             <Category
               category={this.props.category}
               handleCat={this.handleCat}
+              back= {this.state.visible}
             />
           ) : (
-            <Appointment cat={this.state.cat} />
+            <Appointment cat={this.state.cat} close={this.props.close} />
           )}
         </div>
         {console.log(this.props.category.name)}

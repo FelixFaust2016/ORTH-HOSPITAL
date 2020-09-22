@@ -10,7 +10,7 @@ const TopNav = ({ title, auth }) => {
         <i className="fas fa-search"></i>
         <i className="fas fa-envelope-open"></i>
         <i className="fas fa-bell"></i>
-        <main className="circ"></main>
+        <main className="circ">{auth.user.firstname.split("")[0]}</main>
       </main>
     </nav>
   );

@@ -5,7 +5,11 @@ import TimePicker from "react-time-picker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import { createAppointment, getDoctors } from "../store/action";
+import {
+  createAppointment,
+  getDoctors,
+  getUserAppointment,
+} from "../store/action";
 import { withRouter } from "react-router-dom";
 
 class AppointmentComp extends Component {
@@ -28,6 +32,8 @@ class AppointmentComp extends Component {
     getDoctors();
   }
 
+  componentDidUpdate() {}
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -44,17 +50,13 @@ class AppointmentComp extends Component {
     });
   };
 
-  handleSubmit(e) {
-    // e.preventDefault();
-
-    const appoint = {
-      doctorId: this.state.doctorId,
-      subject: this.state.subject,
-      date: this.state.date,
-    };
+  async handleSubmit(e) {
+    e.preventDefault();
 
     console.log(this.state);
-    this.props.createAppointment(this.state);
+    // await this.props.createAppointment(this.state);
+    // await this.props.getUserAppointment();
+    // this.props.close();
   }
 
   render() {
@@ -64,7 +66,7 @@ class AppointmentComp extends Component {
       .filter((doc) => doc.category._id === this.props.cat)
       .map((doctor) => (
         <option value={doctor._id} key={doctor._id}>
-          Dr. {doctor.firstname} {doctor.lastname}
+          {doctor?.user?.firstname || ""} {doctor?.user?.lastname || ""}
         </option>
       ));
     return (
@@ -73,9 +75,6 @@ class AppointmentComp extends Component {
         className="book-inputs"
         onSubmit={this.handleSubmit}
       >
-        {/* <h1 style={{ textAlign: "center", paddingBottom: "20px" }}>
-            BOOK APPOINTMENT
-          </h1> */}
         <div
           style={{
             width: "450px",
@@ -94,7 +93,8 @@ class AppointmentComp extends Component {
               name="doctorId"
               label="doctors"
             >
-              <optgroup label="doctors">{doctors}</optgroup>
+              <option>doctors</option>
+              {doctors}
             </select>
           </div>
 
@@ -110,10 +110,18 @@ class AppointmentComp extends Component {
           </div>
           <div>
             <label>choose time</label> <br />
-            <TimePicker
+            {/* <TimePicker
               className="book-select"
               type="time"
               onChange={this.onTimeChange}
+              value={time}
+              name="time"
+              width="100%"
+            /> */}
+            <input
+              className="book-select"
+              type="time"
+              onChange={this.handleChange}
               value={time}
               name="time"
               width="100%"
@@ -150,5 +158,5 @@ export default connect(
   (store) => ({
     doctors: store.doctors,
   }),
-  { createAppointment, getDoctors }
+  { createAppointment, getDoctors, getUserAppointment }
 )(withRouter(AppointmentComp));

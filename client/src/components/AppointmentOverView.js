@@ -6,16 +6,19 @@ import { getUserAppointment, deleteAppointment } from "../store/action";
 import Button from "./Button";
 import Modal from "./Modal";
 
+import app from "../img/app-page.svg";
+
 class AppointmentOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
+      appointments: [],
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { getUserAppointment } = this.props;
     getUserAppointment();
   }
@@ -28,14 +31,15 @@ class AppointmentOverview extends Component {
     this.setState({ modal: false });
   };
 
-  handleDelete(id) {
-    this.props.deleteAppointment(id);
-    window.location.reload(false)
+  async handleDelete(id) {
+    await this.props.deleteAppointment(id);
+    // window.location.reload(false);
   }
 
   render() {
     const { appointments } = this.props;
 
+    console.log(appointments, "+++++++++++++++");
     const appointment = appointments.map((appointment) => (
       <tr key={appointment._id}>
         <td>
@@ -45,8 +49,8 @@ class AppointmentOverview extends Component {
             />
           </div>
         </td>
-        <td>
-          {appointment.doctor.firstname} {appointment.doctor.lastname}{" "}
+        <td style={{ textTransform: "capitalize" }}>
+          {appointment.doctor.user.firstname} {appointment.doctor.user.lastname}{" "}
         </td>
         <td>{appointment.doctor.category.name}</td>
         <td>{appointment.date.slice(0, 10)}</td>
@@ -112,44 +116,90 @@ class AppointmentOverview extends Component {
               left: "50%",
             }}
           >
-            <Modal />
+            <Modal close={this.closeModal} />
           </div>
         ) : null}
-        <nav className="app-nav">
-          <h3>
-            {this.props.appointments.length === 1
-              ? "RECENT APPOINTMENT"
-              : "RECENT APPOINTMENTS"}
-          </h3>
-          <div onClick={this.handleModal}>
-            <Button
-              value={
-                <span>
-                  <i
-                    style={{ paddingRight: "10px" }}
-                    className="fas
+        {this.props.appointments.length === 0 ? (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "90vh",
+            }}
+          >
+            <div>
+              <div style={{ width: "40%", margin: "0px auto" }}>
+                <img style={{ width: "100%", margin: "0px auto" }} src={app} />
+              </div>
+              <p
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "14px",
+                  textAlign: "center",
+                }}
+              >
+                Book An Appointment in a fast and effective way
+              </p>
+              <div
+                onClick={this.handleModal}
+                style={{ margin: "10px auto", width: "17%" }}
+              >
+                <Button
+                  value={
+                    <span>
+                      <i
+                        style={{ paddingRight: "10px" }}
+                        className="fas
                      fa-user-plus"
-                  ></i>{" "}
-                  add new
-                </span>
-              }
-            />
+                      ></i>{" "}
+                      book appointment
+                    </span>
+                  }
+                />
+              </div>
+            </div>
           </div>
-        </nav>
-        <table className="tb-app">
-          <tbody>
-            <tr style={{ textTransform: "uppercase" }}>
-              <td></td>
-              <td>name</td>
-              <td>category</td>
-              <td>date</td>
-              <td>time</td>
-              <td>status</td>
-              <td></td>
-            </tr>
-            {appointment}
-          </tbody>
-        </table>
+        ) : (
+          <div>
+            <nav className="app-nav">
+              <h3>
+                {this.props.appointments.length === 1
+                  ? "RECENT APPOINTMENT"
+                  : "RECENT APPOINTMENTS"}
+              </h3>
+              <div onClick={this.handleModal}>
+                <Button
+                  value={
+                    <span>
+                      <i
+                        style={{ paddingRight: "10px" }}
+                        className="fas
+                     fa-user-plus"
+                      ></i>{" "}
+                      add new
+                    </span>
+                  }
+                />
+              </div>
+            </nav>
+            <table className="tb-app">
+              <tbody>
+                <tr style={{ textTransform: "uppercase" }}>
+                  <td></td>
+                  <td>name</td>
+                  <td>category</td>
+                  <td>date</td>
+                  <td>time</td>
+                  <td>status</td>
+                  <td></td>
+                </tr>
+                {appointment}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     );
   }

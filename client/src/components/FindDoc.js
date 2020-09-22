@@ -7,7 +7,7 @@ const ProfileDash = () => {
     <div className="find-doc-cont">
       <div style={{width:'50%'}}>
         <div style={{width:"100%"}}><img style={{width:"100%"}} src={doc} /></div>
-        <button style={{fontSize:'10px'}} className="btn">Find Doctor</button>
+        <button style={{fontSize:'9px'}} className="btn">Find Doctor</button>
       </div>
     </div>
   );
