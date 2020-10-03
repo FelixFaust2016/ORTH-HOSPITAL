@@ -23,16 +23,19 @@ class Auth extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     const { email, password } = this.state;
     const { authType } = this.props;
     e.preventDefault();
 
-    await this.props.authUser(authType || "login", { email, password });
-    this.props.history.push("/dashboard")
-   
-
-  
+    console.log("sdsdsdsdsdsdsdsd");
+    this.props
+      .authUser(authType || "login", { email, password })
+      .then((res) => {
+        if (res.email) {
+          this.props.history.push("/dashboard");
+        }
+      });
   }
 
   handleIsLoading = () => {
@@ -43,7 +46,7 @@ class Auth extends Component {
   };
 
   render() {
-    console.log(this.props.history)
+    console.log(this.props.history);
     const { email, password, isLoading } = this.state;
     return (
       <div className="auth-cont">

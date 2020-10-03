@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { authUser, logout } from "../store/action";
 import ErrorMessage from "./Error";
@@ -31,23 +31,27 @@ class Auth extends Component {
     const { authType } = this.props;
     e.preventDefault();
 
-    setTimeout(() => {
-      this.props.authUser(authType || "register", {
+    this.props
+      .authUser(authType || "register", {
         firstname,
         lastname,
         email,
         password,
         userImage,
+      })
+      .then((res) => {
+        if (res.email) {
+          this.props.history.push("/dashboard");
+        }
       });
-    }, 2000);
   }
 
-  handleIsLoading = () => {
-    this.setState({ isLoading: true });
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 2000);
-  };
+  // handleIsLoading = () => {
+  //   this.setState({ isLoading: true });
+  //   setTimeout(() => {
+  //     this.setState({ isLoading: false });
+  //   }, 2000);
+  // };
 
   render() {
     const { firstname, email, lastname, password, isLoading } = this.state;
@@ -119,7 +123,11 @@ class Auth extends Component {
             </div>
             <div className="btn-cont">
               {" "}
-              <button onClick={this.handleIsLoading} className="btn" type="submit">
+              <button
+                onClick={this.handleIsLoading}
+                className="btn"
+                type="submit"
+              >
                 {isLoading === false ? (
                   "Sign up"
                 ) : (
@@ -138,4 +146,4 @@ class Auth extends Component {
   }
 }
 
-export default connect(() => ({}), { authUser, logout })(Auth);
+export default withRouter(connect(() => ({}), { authUser, logout })(Auth));

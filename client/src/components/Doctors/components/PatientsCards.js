@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getUser } from "../../../store/action";
+import { getPatients, getCurrentPatient } from "../../../store/action";
 
-import one from "../../../img/rename.jpg";
+import one from "../../../img/text.jpg";
 
 class PatientsCards extends Component {
   constructor(props) {
@@ -12,30 +12,30 @@ class PatientsCards extends Component {
   }
 
   componentDidMount() {
-    const { getUser } = this.props;
-    getUser();
+    const { getPatients } = this.props;
+    getPatients();
   }
 
   render() {
+    const { patients } = this.props;
     return (
       <>
-        <div className="doctor-card">
-          {" "}
-          <div className="doctor-inner-cont">
-            <div className="doc-card-img">
-              <img style={{ width: "100%" }} src={one} />
-            </div>
-            <div>
-              <aside className="doc-name">
-                {/* {auth.user.firstname} {auth.user.lastname} */}
-              </aside>
-              <aside className="doc-email">
-                {/* {auth.user.email} */}
-                </aside>
-              <aside className="doc-category">
-                {/* {app.profile.phoneNumber} */}
-              </aside>
-            </div>
+        <div className="pt-card-cont">
+          <div className="pt-img-cont">
+            <img style={{ width: "100%" }} src={one} />
+          </div>
+          <i onClick={this.props.click} className="fas fa-ellipsis-v pt-i"></i>
+          <div className="pt-text">
+            <p>NAME</p>
+            <span style={{textTransform:'capitalize', fontWeight:'600'}}>
+               {this.props.firstname} {this.props.lastname}
+            </span>
+            <p>Age</p>
+            <span>{this.props.age} years old</span>
+            <p>DATE OF BIRTH</p>
+            <span>{this.props.DOB.slice(0, 10)}</span>
+            <p>phone number</p>
+            <span>{this.props.phoneNumber}</span>
           </div>
         </div>
       </>
@@ -45,7 +45,7 @@ class PatientsCards extends Component {
 
 export default connect(
   (store) => ({
-    auth: store.auth,
+    patients: store.patients,
   }),
-  { getUser }
+  { getPatients }
 )(PatientsCards);

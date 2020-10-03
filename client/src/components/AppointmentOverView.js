@@ -33,7 +33,7 @@ class AppointmentOverview extends Component {
 
   async handleDelete(id) {
     await this.props.deleteAppointment(id);
-    // window.location.reload(false);
+    window.location.reload(false);
   }
 
   render() {
@@ -55,7 +55,7 @@ class AppointmentOverview extends Component {
         <td>{appointment.doctor.category.name}</td>
         <td>{appointment.date.slice(0, 10)}</td>
         <td>{appointment.time}</td>
-        <td>{appointment.isApproved ? "approved" : "pending..."}</td>
+        <td>{appointment.isApproved}</td>
         <td>
           <button
             onClick={() => this.handleDelete(appointment._id)}

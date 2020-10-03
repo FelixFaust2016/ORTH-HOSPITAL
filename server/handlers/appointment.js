@@ -75,10 +75,11 @@ exports.getAApp = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const appointment = await db.Appointment.findById(id).populate("user", [
-      "email",
-      "id",
-    ]);
+    const appointment = await db.Appointment.findById(id).populate({
+      path: "user",
+      select: "email id firstname lastname",
+      populate: "profile",
+    });
 
     if (!appointment) throw new Error("No appointment found");
 
@@ -124,6 +125,22 @@ exports.deleteAppointment = async (req, res, next) => {
 
     await appointment.remove();
     res.status(202).json(appointment);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};
+
+exports.approveApp = async (req, res, next) => {
+  try {
+    const { id: appointmentId } = req.params;
+    console.log(req.body, "...........");
+    const appointment = await db.Appointment.findByIdAndUpdate(
+      appointmentId,
+      req.body,
+      { new: true }
+    );
+    return res.json(appointment);
   } catch (err) {
     err.status = 400;
     next(err);

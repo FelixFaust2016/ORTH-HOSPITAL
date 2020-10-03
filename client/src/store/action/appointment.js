@@ -49,6 +49,7 @@ export const getCurrentAppointment = (path) => {
     try {
       const appointment = await api.call("get", `appointment/${path}`);
       dispatch(setCurrentAppointment(appointment));
+      dispatch(setAppointments(appointment));
       dispatch(removeError());
     } catch (err) {
       const error = err.response.data;
@@ -71,7 +72,7 @@ export const createAppointment = (data) => {
   };
 };
 
-export const getDoctorsApp = (path) => {
+export const getDoctorsApp = () => {
   return async (dispatch) => {
     try {
       const appointments = await api.call("get", "appointment/doctor");
@@ -84,12 +85,43 @@ export const getDoctorsApp = (path) => {
   };
 };
 
+export const getAAppointment = (path) => {
+  return async (dispatch) => {
+    try {
+      const appointment = await api.call("get", `appointment/${path}`);
+      dispatch(setCurrentAppointment(appointment));
+      dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
+
 export const deleteAppointment = (path) => {
   return async (dispatch) => {
     try {
       const appointment = await api.call("delete", `appointment/${path}`);
       dispatch(setCurrentAppointment(appointment));
       dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
+
+export const approveAppointment = (path, data) => {
+  return async (dispatch) => {
+    try {
+      const appointment = await api.call("put", `appointment/${path}`, data);
+      console.log(appointment)
+      await getDoctorsApp()
+      dispatch(setCurrentAppointment(appointment));
+      dispatch(removeError());
+      getDoctorsApp();
     } catch (err) {
       const error = err.response.data;
       dispatch(addError(error.message));

@@ -1,3 +1,62 @@
+#tb-cont-re {
+  height: 400px;
+  overflow-y: scroll;
+  transition: 0.3s ease-in-out;
+}
+#tb-cont-re::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0;
+}
+/* Track */
+#tb-cont-re::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.116);
+  border-radius: 10px;
+}
+
+/* Handle */
+#tb-cont-re::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.13);
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+/* Handle on hover */
+#tb-cont-re::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+#api-cont-cont:hover #api-cont::-webkit-scrollbar {
+  opacity: 1;
+}
+
+#app-boc-can {
+  width: 100%;
+  height: 500px;
+  overflow-y: scroll;
+  transition: 0.3s ease-in-out;
+  /* padding: 0px 10px; */
+}
+#app-boc-can::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0;
+}
+/* Track */
+#app-boc-can::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.116);
+  border-radius: 10px;
+}
+
+/* Handle */
+#app-boc-can::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.13);
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+/* Handle on hover */
+#app-boc-can::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
 .re-patient-table {
   width: 100%;
   text-align: left;
@@ -6,10 +65,11 @@
   border: 0px;
   border-collapse: collapse;
   border-spacing: 10px 15px;
+  overflow: scroll;
 }
 .re-patient-table tr {
-    margin-top: 20px;
-    border-radius: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 .re-patient-table-hd {
   font-size: 11px;
@@ -43,4 +103,27 @@
 .re-patient-table-text td {
   font-size: 10px;
   padding: 10px 20px;
+}
+
+.pat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pat-text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 0px auto;
+}
+.pat-txt {
+  width: 130px;
+  margin-top: 10px;
+}
+.pat-txt p {
+  text-transform: capitalize;
+  font-size: 12px;
+  color: var(--alt-text);
 }

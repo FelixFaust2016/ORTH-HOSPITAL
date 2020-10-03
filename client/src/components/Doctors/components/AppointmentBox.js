@@ -18,20 +18,21 @@ class AppBox extends Component {
   render() {
     const { appointments } = this.props;
     return (
-      <>
+      <div id="app-boc-can">
         {appointments.map((app) => (
           <div
             style={{
-              width: "88%",
+              width: "81%",
               padding: "10px 20px",
               height: "80px",
               display: "flex",
               alignItems: "center",
               // justifyContent: "space-between",
-              boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.144)",
+              boxShadow: "1px 1px 5px 0px rgba(0, 0, 0, 0.144)",
               marginTop: "20px",
-              borderRadius: "10px",
+              borderRadius: "5px",
               cursor: "pointer",
+              margin: "20px auto",
             }}
           >
             <div
@@ -45,8 +46,12 @@ class AppBox extends Component {
               <img width="100%" style={{ borderRadius: "50px" }} src={one} />
             </div>
             <div style={{ marginLeft: "10px" }}>
-            <h6>{app?.user?.firstname} {app?.user?.lastname}</h6>
-              <p style={{ fontSize: "10px" }}>{app?.date.slice(0, 10)} at {app?.time}</p>
+              <h6>
+                {app?.user?.firstname} {app?.user?.lastname}
+              </h6>
+              <p style={{ fontSize: "10px" }}>
+                {app?.date.slice(0, 10)} at {app?.time}
+              </p>
             </div>
             <div style={{ flex: "1" }}></div>
             <span>
@@ -65,7 +70,7 @@ class AppBox extends Component {
             </span>
           </div>
         ))}
-      </>
+      </div>
     );
   }
 }

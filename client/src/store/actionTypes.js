@@ -1,8 +1,9 @@
 export const ADD_ERROR = "ADD_ERROR";
 export const REMOVE_ERROR = "REMOVE_ERROR";
 
-export const SET_USER = "SET_USER"
+export const SET_USER = "SET_USER";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+
 export const SET_DOCTORS = "SET_DOCTORS";
 export const SET_CURRENT_DOCTOR = "SET_CURRENT_DOCTOR";
 
@@ -10,12 +11,11 @@ export const SET_QUOTES = "SET_QUOTES";
 
 export const SET_APPOINTMENT = "SET_APPOINTMENT";
 export const SET_CURRENT_APPOINTMENT = "SET_CURRENT_APPOINTMENT";
-// export const ADD_APPOINTMENT = "ADD_APPOINMENT";
-// export const DELETE_APPOINTMENT = "DELETE_APPOINTMENT";
 
 export const SET_PROFILE = "SET_PROFILE";
 export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE";
 
 export const SET_CATEGORY = "SET_CATEGORY";
 
-export const SET_PATIENT = "SET_PATIENT"
+export const SET_PATIENT = "SET_PATIENT";
+export const SET_CURRENT_PATIENT = "SET_CURRENT_PATIENT";

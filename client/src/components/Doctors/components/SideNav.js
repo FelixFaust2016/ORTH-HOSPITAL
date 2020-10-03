@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
+import { logout } from "../../../store/action";
 import Logo from "../../Logo";
 
 class Navigation extends Component {
@@ -53,7 +55,7 @@ class Navigation extends Component {
             ))}
           </div>
         </nav>{" "}
-        <div className="link-cont logout">
+        <div onClick={this.props.logout} className="link-cont logout">
           <div className="icon">
             <i style={{ color: "white" }} className="fas fa-sign-out-alt"></i>
           </div>
@@ -64,4 +66,6 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default connect((store) => ({ auth: store.auth }), { logout })(
+  Navigation
+);

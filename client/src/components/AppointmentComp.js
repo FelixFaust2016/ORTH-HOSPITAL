@@ -54,9 +54,9 @@ class AppointmentComp extends Component {
     e.preventDefault();
 
     console.log(this.state);
-    // await this.props.createAppointment(this.state);
-    // await this.props.getUserAppointment();
-    // this.props.close();
+    await this.props.createAppointment(this.state);
+    await this.props.getUserAppointment();
+    this.props.close();
   }
 
   render() {

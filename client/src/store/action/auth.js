@@ -33,6 +33,7 @@ export const authUser = (path, data, cb) => {
       api.setToken(token);
       dispatch(setCurrentUser(user));
       dispatch(removeError());
+      return user
     } catch (err) {
       const error = err.response.data;
       dispatch(addError(error.message));

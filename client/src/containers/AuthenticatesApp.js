@@ -4,22 +4,19 @@ import { connect } from "react-redux";
 
 import Views from "./Views";
 import DoctorsViews from "../components/Doctors/containers/Views";
+import AdminView from "../components/Admin/container/Views";
 
 const AuthicatedApp = ({ auth }) => {
-    
-    console.log("#################")
-    console.log(auth)
-    const role = auth?.user?.role || "";
+  console.log("#################");
+  console.log(auth);
+  const role = auth?.user?.role || "";
 
-    const components = {
-        "patient": <Views />,
-        "doctor": <DoctorsViews />
-    }
-  return (
-   <Switch>
-       {components[role]}
-   </Switch>
-  );
+  const components = {
+    patient: <Views />,
+    doctor: <DoctorsViews />,
+    admin: <AdminView />,
+  };
+  return <Switch>{components[role]}</Switch>;
 };
 
 export default connect((store) => ({ auth: store.auth }), {})(AuthicatedApp);

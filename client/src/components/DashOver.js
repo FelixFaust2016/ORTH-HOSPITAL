@@ -64,7 +64,7 @@ export default connect(
   (store) => ({
     auth: store.auth,
     appointments: store.appointments,
-    doctors: store.doctors
+    doctors: store.doctors,
   }),
   {
     getAppointments,

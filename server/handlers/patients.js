@@ -13,7 +13,7 @@ exports.getUsers = async (req, res, next) => {
 
 exports.getPatients = async (req, res, next) => {
   try {
-    const patient = await db.User.find({ role: "patient" });
+    const patient = await db.User.find({ role: "patient" }).populate("profile");
 
     res.status(200).json(patient);
   } catch (err) {
@@ -24,7 +24,10 @@ exports.getPatients = async (req, res, next) => {
 
 exports.getAPatient = async (req, res, next) => {
   try {
-    const patient = await db.User.findById({ role: "patient" });
+
+    const { id } = req.params;
+
+    const patient = await db.User.findById(id).populate("profile");
 
     res.status(200).json(patient);
   } catch (err) {

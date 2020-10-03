@@ -12,6 +12,7 @@ router.get("/doctor", auth, handlers.getDocApp)
 router
   .route("/:id")
   .get(handlers.getAApp)
-  .delete(auth, handlers.deleteAppointment);
+  .delete(auth, handlers.deleteAppointment)
+  .put(auth, handlers.approveApp)
 
 module.exports = router;
