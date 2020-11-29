@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createProfile, getUserProfile, updateProfile } from "../store/action";
+import PhoneInput from "react-phone-number-input";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import DatePicker from "react-datepicker";
 
@@ -19,7 +20,7 @@ class Profile extends Component {
     const profile = this.props.profile || {};
     this.state = {
       age: profile.age || "",
-      DOB: "",
+      DOB: profile.DOB || "",
       gender: profile.gender || "",
       country: profile.country || "",
       region: profile.region || "",
@@ -27,12 +28,13 @@ class Profile extends Component {
       address: profile.address || "",
       nextOffKinPhoneNumber: profile.nextOffKinPhoneNumber || "",
       nextOffKinAddress: profile.nextOffKinAddress || "",
-      genotype: profile.genotype || "",
-      bloodGroup: profile.bloodGroup || "",
+      // genotype: profile.genotype || "",
+      // bloodGroup: profile.bloodGroup || "",
       prevDoctor: profile.prevDoctor || "",
       weight: profile.weight || "",
       height: profile.height || "",
       doctorId: profile.doctorId || "",
+      email: profile.email || ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleDate = this.handleDate.bind(this);
@@ -60,6 +62,9 @@ class Profile extends Component {
   }
   handleSelectRegion(region) {
     this.setState({ region: region });
+  }
+  handleSelectPhone(phoneNumber) {
+    this.setState({ phoneNumber: phoneNumber });
   }
 
   handleDate = (date) => {
@@ -97,6 +102,7 @@ class Profile extends Component {
       genotype,
       bloodGroup,
       address,
+      email
     } = this.state;
 
     const { profile } = this.props;
@@ -148,10 +154,13 @@ class Profile extends Component {
             <div className="prof-input">
               <label>Date of Birth</label>
               <br />
-              <DatePicker
-                selected={DOB}
-                onChange={this.handleDate}
-                className="regionSelect"
+              <input
+                type="date"
+                value={DOB}
+                name="DOB"
+                onChange={this.handleChange}
+                autoComplete="off"
+                // className="regionSelect"
               />
             </div>
             <div className="prof-input">
@@ -191,7 +200,7 @@ class Profile extends Component {
               <label>Phone number</label>
               <br />
               <input
-                type="text"
+                type="tel"
                 value={phoneNumber}
                 name="phoneNumber"
                 onChange={this.handleChange}
@@ -229,6 +238,17 @@ class Profile extends Component {
               />
             </div>
             <div className="prof-input">
+              <label>email</label>
+              <br />
+              <input
+                type="text"
+                value={email}
+                name="email"
+                onChange={this.handleChange}
+                autoComplete="off"
+              />
+            </div>
+            {/* <div className="prof-input">
               <label>weight</label>
               <br />
               <input
@@ -282,14 +302,16 @@ class Profile extends Component {
                 onChange={this.handleChange}
                 autoComplete="off"
               />
+            </div> */}
+            <div style={{ width: "100%" }}>
+              <button
+                // onClick={() => this.props.shouldHide((view) => !view)}
+                style={{ marginTop: "20px" }}
+                className="btn"
+              >
+                {this.props.profile ? "Edit Profile" : "Create Profile"}
+              </button>
             </div>
-            <button
-              // onClick={() => this.props.shouldHide((view) => !view)}
-              style={{ marginTop: "20px" }}
-              className="btn"
-            >
-              {this.props.profile ? "Edit Profile" : "Create Profile"}
-            </button>
           </div>
         </form>
       </div>

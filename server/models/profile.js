@@ -37,12 +37,12 @@ const profileSchema = new mongoose.Schema({
   genotype: {
     type: String,
     enum: ["aa", "as", "ss"],
-    required: true,
+    // required: true,
   },
   bloodGroup: {
     type: String,
     enum: ["a", "ab", "b", "o-", "o+"],
-    required: true,
+    // required: true,
   },
   prevIllness: {
     type: String,
@@ -83,6 +83,10 @@ const profileSchema = new mongoose.Schema({
   },
   height: {
     type: String,
+  },
+  email: {
+    type: String,
+    required: true
   },
 });
 

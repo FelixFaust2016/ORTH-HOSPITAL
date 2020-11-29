@@ -17,9 +17,6 @@ const Doctors = ({ isAuthenticated, props }) => {
       <div className="side">
         <div style={{ width: "100%", margn: "0px auto" }}>
           <TopNav title={"doctors"} />
-          {/* <Doctor /> */}
-          {/* <Doctor/> */}
-          {/* <All /> */}
           <DoctorTab />
         </div>
       </div>

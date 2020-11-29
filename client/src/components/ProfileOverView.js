@@ -183,7 +183,7 @@ class ProfOverview extends Component {
                   </div>
                   <br />
                   <hr></hr>
-                  <div className="prof-over-cont-text">
+                  {/* <div className="prof-over-cont-text">
                     <h5>Genotype:</h5>
                     <p>{profile.genotype}</p>
                   </div>
@@ -198,7 +198,7 @@ class ProfOverview extends Component {
                   <div className="prof-over-cont-text">
                     <h5>height:</h5>
                     <p>{profile.height}</p>
-                  </div>
+                  </div> */}
                 </div>
               </div>{" "}
             </>

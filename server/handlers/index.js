@@ -7,6 +7,7 @@ module.exports = {
   ...require("./review"),
   ...require("./profile"),
   ...require("./patients"),
+  ...require("./lab")
 };
 
 module.exports.notFound = (req, res, next) => {

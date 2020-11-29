@@ -36,7 +36,7 @@ class DoctorsDash extends Component {
           <div style={{ width: "100%", margn: "0px auto" }}>
             <TopNav title={"overview"} />
             <div className="doctor-over-stat-cont">
-              <div style={{ width: "65%" }}>
+              <div style={{ width: "65%", flexWrap: "wrap" }}>
                 <div className="doctor-over-stat">
                   <div>
                     <aside className="doctor-patients-img">

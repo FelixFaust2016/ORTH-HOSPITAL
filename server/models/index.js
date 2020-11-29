@@ -17,3 +17,4 @@ module.exports.Appointment = require("./appiontment");
 module.exports.Quotes = require("./quotes");
 module.exports.Review = require("./review");
 module.exports.Profile = require("./profile");
+module.exports.Test = require("./lab")

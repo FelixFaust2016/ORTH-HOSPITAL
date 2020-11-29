@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Views from "./Views";
 import DoctorsViews from "../components/Doctors/containers/Views";
 import AdminView from "../components/Admin/container/Views";
+import LabView from "../components/Lab/container/Views";
 
 const AuthicatedApp = ({ auth }) => {
   console.log("#################");
@@ -15,6 +16,7 @@ const AuthicatedApp = ({ auth }) => {
     patient: <Views />,
     doctor: <DoctorsViews />,
     admin: <AdminView />,
+    lab: <LabView />,
   };
   return <Switch>{components[role]}</Switch>;
 };

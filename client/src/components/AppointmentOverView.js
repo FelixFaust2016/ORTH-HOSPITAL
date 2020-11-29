@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getUserAppointment, deleteAppointment } from "../store/action";
+import {
+  getUserAppointment,
+  deleteAppointment,
+  getAAppointment,
+} from "../store/action";
 import Button from "./Button";
 import Modal from "./Modal";
 
@@ -12,10 +16,12 @@ class AppointmentOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      det: false,
       modal: false,
       appointments: [],
     };
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async componentDidMount() {
@@ -36,9 +42,20 @@ class AppointmentOverview extends Component {
     window.location.reload(false);
   }
 
-  render() {
-    const { appointments } = this.props;
+  async handleClick(id) {
+    this.setState({ det: !this.state.det });
+    const { getAAppointment } = this.props;
+    await getAAppointment(id);
+    console.log(this.props.app);
+  }
 
+  handleClose = () => {
+    this.setState({ det: false });
+  };
+
+  render() {
+    const { appointments, app } = this.props;
+    const { det } = this.state;
     console.log(appointments, "+++++++++++++++");
     const appointment = appointments.map((appointment) => (
       <tr key={appointment._id}>
@@ -53,9 +70,25 @@ class AppointmentOverview extends Component {
           {appointment.doctor.user.firstname} {appointment.doctor.user.lastname}{" "}
         </td>
         <td>{appointment.doctor.category.name}</td>
-        <td>{appointment.date.slice(0, 10)}</td>
-        <td>{appointment.time}</td>
+        <td>{appointment?.date?.slice(0, 10) || "pending..."}</td>
+        <td>{appointment?.time || "pending..."}</td>
         <td>{appointment.isApproved}</td>
+        <td>
+          <button
+            onClick={() => this.handleClick(appointment._id)}
+            style={{
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              cursor: "pointer",
+              border: "none",
+              fontSize: "12px",
+              background: "white",
+              outline: "none",
+            }}
+          >
+            view
+          </button>
+        </td>
         <td>
           <button
             onClick={() => this.handleDelete(appointment._id)}
@@ -81,6 +114,51 @@ class AppointmentOverview extends Component {
           width: "100%",
         }}
       >
+        {det && (
+          <div
+            style={{
+              position: "absolute",
+              position: "fixed",
+              background: "#05a081c7",
+              height: "100vh",
+              width: "100%",
+              zIndex: "3",
+              top: "0",
+              left: "0",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <i
+              onClick={this.handleClose}
+              style={{
+                position: "absolute",
+                top: "50px",
+                right: "50px",
+                color: "white",
+                fontSize: "20px",
+                cursor: "pointer",
+              }}
+              className="fas fa-times"
+            ></i>
+            <div
+              style={{
+                width: "500px",
+                padding: "20px",
+                background: "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
+                <h3>Doctors Comment</h3>
+                <p>{app?.comment || "'no comment for Know'"}</p>
+              </div>
+            </div>
+          </div>
+        )}
         {this.state.modal ? (
           <div
             onClick={this.closeModal}
@@ -193,6 +271,7 @@ class AppointmentOverview extends Component {
                   <td>date</td>
                   <td>time</td>
                   <td>status</td>
+                  <td>comment</td>
                   <td></td>
                 </tr>
                 {appointment}
@@ -208,6 +287,7 @@ class AppointmentOverview extends Component {
 export default connect(
   (store) => ({
     appointments: store.appointments,
+    app: store.currentAppointment,
   }),
-  { getUserAppointment, deleteAppointment }
+  { getUserAppointment, deleteAppointment, getAAppointment }
 )(AppointmentOverview);

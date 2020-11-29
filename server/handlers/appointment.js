@@ -32,7 +32,8 @@ exports.addApp = async (req, res, next) => {
     const { id } = req.decoded;
     const user = await db.User.findById(id);
     // const doctorId = await db.Doctor.findById(id);
-    const { subject, date, time, isApproved } = req.body;
+    const { subject, date, time, isApproved, comment } = req.body;
+
     const appointment = await db.Appointment.create({
       doctor: req.body.doctorId,
       subject,
@@ -40,8 +41,10 @@ exports.addApp = async (req, res, next) => {
       time,
       id,
       isApproved,
+      comment,
       user,
     });
+
     user.appointments.push(appointment._id);
     // doctorId.appointments.push(appointment._id);
     await user.save();
@@ -75,11 +78,16 @@ exports.getAApp = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const appointment = await db.Appointment.findById(id).populate({
-      path: "user",
-      select: "email id firstname lastname",
-      populate: "profile",
-    });
+    const appointment = await db.Appointment.findById(id)
+      .populate({
+        path: "user",
+        select: "email id firstname lastname",
+        populate: "profile",
+      })
+      .populate({
+        path: "doctor",
+        populate: "user",
+      });
 
     if (!appointment) throw new Error("No appointment found");
 

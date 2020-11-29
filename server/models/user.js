@@ -29,11 +29,20 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "doctor", "patient"],
+    enum: ["admin", "doctor", "patient", "lab"],
     default: "patient",
   },
+  status: {
+    type: String, 
+    enum: ["in-patient", "out-patient"],
+    default: "out-patient"
+  },
   appointments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Appointment" }],
-  profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Profile"
+  },
+  tests: [{ type: mongoose.Schema.Types.ObjectId, ref: "Test" }],
 });
 
 userSchema.pre("save", async function (next) {

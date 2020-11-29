@@ -1,19 +1,35 @@
 * {
   /* font-family: "Montserrat", sans-serif; */
   font-family: "Open Sans", sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* font-family: 'Roboto', sans-serif; */
 }
 :root {
   --danger: #eb5042;
   --primary: #05a08177;
-  --btn-color: #ED8388 ;
-  --btn-active-color: rgba(243, 188, 178, 0.726) ;
+  --btn-color: #ed8388;
+  --btn-active-color: rgba(243, 188, 178, 0.726);
   --background-color: rgba(128, 128, 128, 0.103);
   --border-color: #41414111;
   --primary-sec: #05a081c7;
-  --alt-text: #7E8085;
+  --alt-text: #7e8085;
   --border-color: #e7eaee52;
   /* fad0c9ff */
   /* 32BEA6  alt-greem */
+}
+.pt-tab div:nth-child(1) {
+  border-left: none;
+}
+.pt-tab div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+  border-left: 1px solid black;
+}
+.pt-tab div:hover {
+  background: var(--primary);
+  color: white;
 }

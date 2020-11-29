@@ -6,3 +6,4 @@ export * from "./appointment";
 export * from "./category";
 export * from "./profile";
 export * from "./patinets";
+export * from "./test"

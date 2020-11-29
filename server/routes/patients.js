@@ -2,9 +2,10 @@ const router = require("express").Router();
 
 const handlers = require("../handlers");
 
-router.route("/").get(handlers.getPatients)
-router.route("/users").get(handlers.getUsers);
+router.get("/", handlers.getPatients);
+router.get("/users", handlers.getUsers);
 
-router.route("/:id").get(handlers.getAPatient)
+router.get("/:id", handlers.getAPatient);
+router.put("/:id", handlers.statusUpdate);
 
 module.exports = router;

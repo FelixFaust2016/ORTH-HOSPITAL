@@ -25,7 +25,7 @@ class Navigation extends Component {
           icon: "far fa-calendar-check",
           path: "/doctors_appointments",
         },
-        { link: "Settings", icon: "fas fa-cogs", path: "/doctors_settings" },
+        // { link: "Settings", icon: "fas fa-cogs", path: "/doctors_settings" },
       ],
     };
   }

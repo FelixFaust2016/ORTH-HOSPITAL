@@ -25,6 +25,33 @@ export const getProfile = () => {
   };
 };
 
+export const getAProfile = (path) => {
+  return async (dispatch) => {
+    try {
+      const profile = await api.call("get", `profile/${path}`);
+      dispatch(setCurrentProfile(profile));
+      dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
+export const getCurrentProfile = (path) => {
+  return async (dispatch) => {
+    try {
+      const profile = await api.call("get", `profile/${path}`);
+      dispatch(setCurrentProfile(profile));
+      dispatch(setProfiles(profile));
+      dispatch(removeError());
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};
+
 export const getUserProfile = () => {
   return async (dispatch) => {
     try {
@@ -32,7 +59,7 @@ export const getUserProfile = () => {
       dispatch(setProfiles(profiles));
       dispatch(removeError());
     } catch (err) {
-      console.log(err)
+      console.log(err);
       // const error = err.response.data;
       // dispatch(addError(error.message));
     }
@@ -64,4 +91,20 @@ export const updateProfile = (data) => {
       dispatch(addError(error.message));
     }
   };
-}
+};
+
+export const updateAProfile = (path, data) => {
+  return async (dispatch) => {
+    try {
+      const profile = await api.call("put", `profile/${path}`, data);
+      // console.log(profile)
+      await getProfile();
+      dispatch(setCurrentProfile(profile));
+      dispatch(removeError());
+      getProfile();
+    } catch (err) {
+      const error = err.response.data;
+      dispatch(addError(error.message));
+    }
+  };
+};

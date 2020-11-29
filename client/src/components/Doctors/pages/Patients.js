@@ -175,6 +175,7 @@ class Patients extends Component {
                   key={patient._id}
                   firstname={patient?.firstname || "NAN"}
                   lastname={patient?.lastname || "NAN"}
+                  email={patient?.email || "NAN"}
                   age={patient?.profile?.age || "NAN"}
                   DOB={patient?.profile?.DOB || "NAN"}
                   phoneNumber={patient?.profile?.phoneNumber || "NAN"}

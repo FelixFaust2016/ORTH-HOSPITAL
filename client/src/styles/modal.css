@@ -1,9 +1,21 @@
 .mod {
   transform: translate(-50%, -50%);
+  animation: slideDown 0.3s ease-in-out;
 }
 
 .inner-modal-cont {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes slideDown {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }

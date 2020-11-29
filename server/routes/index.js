@@ -7,3 +7,4 @@ module.exports.quotes = require("./quotes");
 module.exports.review = require("./review");
 module.exports.profile = require("./profile");
 module.exports.patient = require("./patients");
+module.exports.test = require("./lab");

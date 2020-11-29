@@ -20,13 +20,12 @@ class Appointment extends Component {
   }
 
   render() {
-    const { auth, getAppointments, getUserAppointment } = this.props;
 
     const appointments = this.props.appointments.map((appointments, i) => (
       <div className="appointment-cont" key={appointments._id}>
         <div>
           <span style={{ fontWeight: "600", fontSize: "10px" }}>
-            {appointments.date.slice(0, 10)} BY {appointments.time}
+            {appointments?.date?.slice(0, 10) || ""} BY {appointments?.time || "...."}
           </span>
           <span className="appp-img-cont">
             <div className="apoint-img">

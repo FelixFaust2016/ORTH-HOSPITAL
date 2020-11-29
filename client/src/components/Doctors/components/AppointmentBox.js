@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getDoctorsApp } from "../../../store/action";
+import { getDoctorsApp, approveAppointment } from "../../../store/action";
 
 import one from "../../../img/text.jpg";
 
@@ -50,14 +50,19 @@ class AppBox extends Component {
                 {app?.user?.firstname} {app?.user?.lastname}
               </h6>
               <p style={{ fontSize: "10px" }}>
-                {app?.date.slice(0, 10)} at {app?.time}
+                {app?.date?.slice(0, 10 || "")} at {app?.time || "..."}
               </p>
             </div>
             <div style={{ flex: "1" }}></div>
-            <span>
-              <i
+            <span
+              style={{
+                color: app?.isApproved === "approved" ? "#05a08177" : "#ED8388",
+                fontSize: "10px",
+              }}
+            >
+              {/* <i
                 style={{ color: "#05a08177", cursor: "pointer" }}
-                className="fas fa-check-circle"
+                className="far fa-check-circle"
               ></i>
               <i
                 style={{
@@ -66,7 +71,8 @@ class AppBox extends Component {
                   cursor: "pointer",
                 }}
                 className="far fa-times-circle"
-              ></i>
+              ></i> */}
+              {app?.isApproved}
             </span>
           </div>
         ))}
@@ -78,5 +84,5 @@ export default connect(
   (store) => ({
     appointments: store.appointments,
   }),
-  { getDoctorsApp }
+  { getDoctorsApp, approveAppointment }
 )(AppBox);

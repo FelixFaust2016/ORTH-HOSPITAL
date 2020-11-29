@@ -12,6 +12,14 @@ class AppointmentCard extends Component {
     };
   }
 
+  handleHide = () => {
+    this.setState({ det: !this.state.det });
+  };
+
+  handleClose = () => {
+    this.setState({ det: false });
+  };
+
   // componentDidUpdate(prevState, prevProps) {
   //   console.log(this.state.status, this.props.app.isApproved);
   //   if (this.state.status !== this.props.app.isApproved) {
@@ -24,10 +32,67 @@ class AppointmentCard extends Component {
   render() {
     const { det } = this.state;
     return (
-      <>
+      <div style={{ position: "relative" }}>
         <div
           style={{
+            position: "relative",
+            right: "10px",
+            top: "10px",
+            cursor: "pointer",
+            width: "100%",
+            zIndex: "1",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "12px",
+              fontWeight: "600",
+              position: "absolute",
+              right: "30px",
+              top: "20px",
+            }}
+            onClick={this.handleHide}
+          >
+            click
+          </span>
+          {det && (
+            <div
+              className="dr-hv"
+              style={{
+                position: "absolute",
+                width: "200px",
+                padding: "10px 10px",
+                fontSize: "10px",
+                boxShadow: " 0 10px 8px rgba(0, 0, 0, 0.076)",
+                background: "white",
+              }}
+            >
+              <div style={{ cursor: "pointer" }} onClick={this.props.comment}>
+                comment
+              </div>
+              <div style={{ cursor: "pointer" }} onClick={this.props.subClick}>
+                view description
+              </div>
+              <div>
+                <a
+                  style={{
+                    cursor: "pointer",
+                    color: "black",
+                    textDecoration: "none",
+                  }}
+                  href="https://gmail.com/"
+                >
+                  send prescription through mail
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+        <div
+          onClick={this.handleClose}
+          style={{
             transition: "0.5s ease-in-out",
+            margin: "20px 30px",
           }}
           className="doc-app-card-cont"
         >
@@ -66,7 +131,7 @@ class AppointmentCard extends Component {
                       cursor: "pointer",
                       fontSize: "16px",
                     }}
-                    className="fas fa-check-circle"
+                    className="far fa-check-circle"
                   ></i>
                 )}
                 {this.state.status === "canceled" ? (
@@ -119,7 +184,7 @@ class AppointmentCard extends Component {
                   color: "#05a08177",
                 }}
               >
-                View Details
+                Set Appointment
               </p>
               <div
                 style={{
@@ -132,7 +197,7 @@ class AppointmentCard extends Component {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

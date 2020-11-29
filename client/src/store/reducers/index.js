@@ -8,6 +8,7 @@ import { appointments, currentAppointment } from "./appointment";
 import { categories } from "./category";
 import { profiles } from "./profile";
 import { patients, currentPatient } from "./patinets";
+import { tests, currentTest } from "./test";
 
 export default combineReducers({
   auth,
@@ -21,4 +22,6 @@ export default combineReducers({
   profiles,
   patients,
   currentPatient,
+  tests,
+  currentTest,
 });

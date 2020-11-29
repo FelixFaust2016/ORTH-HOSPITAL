@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const multer = require("multer");
+const { updateAProfile } = require("../handlers");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -33,7 +34,9 @@ const { auth } = require("../middlewares/auth");
 router.get("/", handlers.getProfile);
 
 router.post("/", auth, upload.single("profileImage"), handlers.addProfile);
-router.put("/", auth,handlers.updateProfile);
+router.put("/", auth, handlers.updateProfile);
+
+router.put("/:id", auth, handlers.updateAProfile);
 
 router.get("/user", auth, handlers.getUserProfile);
 

@@ -17,19 +17,24 @@ class PatientsCards extends Component {
   }
 
   render() {
-    const { patients } = this.props;
     return (
-      <>
+      <div>
         <div className="pt-card-cont">
           <div className="pt-img-cont">
             <img style={{ width: "100%" }} src={one} />
           </div>
           <i onClick={this.props.click} className="fas fa-ellipsis-v pt-i"></i>
+          <i
+            style={{ marginTop: "30px", fontSize: "12px" }}
+            className="fas fa-pen pt-i"
+          ></i>
           <div className="pt-text">
             <p>NAME</p>
-            <span style={{textTransform:'capitalize', fontWeight:'600'}}>
-               {this.props.firstname} {this.props.lastname}
+            <span style={{ textTransform: "capitalize", fontWeight: "600" }}>
+              {this.props.firstname} {this.props.lastname}
             </span>
+            <p>Email</p>
+            <span>{this.props.email}</span>
             <p>Age</p>
             <span>{this.props.age} years old</span>
             <p>DATE OF BIRTH</p>
@@ -38,7 +43,7 @@ class PatientsCards extends Component {
             <span>{this.props.phoneNumber}</span>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

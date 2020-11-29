@@ -21,6 +21,7 @@ app.use("/api/quotes", routes.quotes);
 app.use("/api/reviews", routes.review);
 app.use("/api/profile", routes.profile);
 app.use("/api/patient", routes.patient);
+app.use("/api/test", routes.test);
 
 app.use(handle.notFound);
 app.use(handle.errorHandler);

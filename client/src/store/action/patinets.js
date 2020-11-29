@@ -37,3 +37,14 @@ export const getCurrentPatient = (path) => {
     }
   };
 };
+
+// export const getPatientsTest = (path) => {
+//   return async (dispatch) => {
+//     try {
+//       const test = await api.call
+//     } catch (err) {
+//       const error = err.response.data;
+//       dispatch(addError(error.message))
+//     }
+//   }
+// }

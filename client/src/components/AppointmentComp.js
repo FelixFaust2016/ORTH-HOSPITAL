@@ -18,8 +18,8 @@ class AppointmentComp extends Component {
     this.state = {
       doctorId: "",
       subject: "",
-      date: "",
-      time: "",
+      // date: "",
+      // time: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -99,7 +99,7 @@ class AppointmentComp extends Component {
           </div>
 
           {/* <div> */}
-          <div>
+          {/* <div>
             <label>choose date</label> <br />
             <DatePicker
               selected={date}
@@ -110,14 +110,6 @@ class AppointmentComp extends Component {
           </div>
           <div>
             <label>choose time</label> <br />
-            {/* <TimePicker
-              className="book-select"
-              type="time"
-              onChange={this.onTimeChange}
-              value={time}
-              name="time"
-              width="100%"
-            /> */}
             <input
               className="book-select"
               type="time"
@@ -126,7 +118,7 @@ class AppointmentComp extends Component {
               name="time"
               width="100%"
             />
-          </div>
+          </div> */}
         </div>
         {/* </div> */}
         <div style={{ marginTop: "10px" }}>

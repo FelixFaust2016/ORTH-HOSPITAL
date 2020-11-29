@@ -89,3 +89,19 @@ exports.updateProfile = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.updateAProfile = async (req, res, next) => {
+  try {
+    const { id: profileId } = req.params;
+    console.log(req.body, "...........");
+    const profile = await db.Profile.findByIdAndUpdate(
+      profileId,
+      req.body,
+      { new: true }
+    );
+    return res.json(profile);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};

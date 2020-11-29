@@ -1,0 +1,35 @@
+.create-form-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.users-create-form {
+  height: 54vh;
+}
+.create-form-cont label {
+  text-transform: capitalize;
+  color: grey;
+  font-size: 12px;
+  font-weight: bold;
+}
+.create-form-cont input {
+  width: 480px;
+  padding: 5px 5px;
+  border: none;
+  border: 0.1px solid rgba(128, 128, 128, 0.158);
+  background: var(--border-color);
+  outline-color: var(--primary-sec);
+  /* margin-top: 20px; */
+}
+
+.doc-create-form {
+  width: 500px;
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+  margin-top: 20px;
+}
+.doc-div {
+  margin-top: 10px;
+}

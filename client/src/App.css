@@ -26,5 +26,7 @@
 @import "./styles/dropdown.css";
 @import "./styles/doctorPatient.css";
 @import "./styles/notFound.css";
+@import "./styles/adminAppointmentCard.css";
+@import "./styles/createUser.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

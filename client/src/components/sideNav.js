@@ -22,11 +22,6 @@ class SideNav extends Component {
           path: "/appointments",
         },
         { link: "Profile", icon: "far fa-id-badge", path: "/profile" },
-        {
-          link: "Payment",
-          icon: "fas fa-wallet",
-          path: "/payment",
-        },
       ],
     };
   }

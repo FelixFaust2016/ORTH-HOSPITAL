@@ -1,39 +1,76 @@
 .pt-card-cont {
-    width: 200px;
-    padding: 20px 30px;
-    border-radius: 5px;
-    background: white;
-    margin-top: 20px;
-    position: relative;
-    transition: 0.3s ease-in-out;
+  width: 200px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background: white;
+  margin-top: 20px;
+  position: relative;
+  transition: 0.3s ease-in-out;
 }
 .pt-card-cont:hover {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 .pt-img-cont {
-    width: 80px;
-    height: 80px;
-    border-radius: 60px;
-    overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border-radius: 60px;
+  overflow: hidden;
 }
 .pt-i {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color:var(--alt-text);
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--alt-text);
+  cursor: pointer;
 }
 .pt-text {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .pt-text span {
-    font-size: 12px;
-    color: black;
+  font-size: 12px;
+  color: black;
 }
 .pt-text p {
-    margin-top:5px;
-    font-weight: 600;
-    color: var(--alt-text);
-    font-size: 10px;
-    text-transform: uppercase;
+  margin-top: 5px;
+  font-weight: 600;
+  color: var(--alt-text);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.pt-lb-card-cont {
+  width: 180px;
+  height: 230px;
+  overflow: hidden;
+  margin: 0px 20px;
+  position: relative;
+}
+
+.pt-lb-card-cont img {
+  width: 100%;
+  border-radius: 8px;
+}
+.sl-up {
+  width: calc(100% - 40px);
+  position: absolute;
+  bottom: -68%;
+  background: white;
+  font-size: 12px;
+  padding: 10px 20px;
+  word-break: break-all;
+  border-radius: 8px 8px 0px 0px;
+  transition: 0.3s ease-in-out;
+}
+.pt-lb-card-cont:hover .sl-up {
+  bottom: 0;
+}
+.sl-up h4 {
+  padding-bottom: 10px;
+}
+.sl-up button {
+  margin: 10px auto;
+}
+.pt-lb-main-card-cont {
+  display: flex;
+  margin: 20px 0px;
 }

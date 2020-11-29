@@ -19,3 +19,6 @@ export const SET_CATEGORY = "SET_CATEGORY";
 
 export const SET_PATIENT = "SET_PATIENT";
 export const SET_CURRENT_PATIENT = "SET_CURRENT_PATIENT";
+
+export const SET_TEST = "SET_TEST";
+export const SET_CURRENT_TEST = "SET_CURRENT_TEST";
